@@ -6,12 +6,18 @@
     With Food Boutique, you're not just subscribing to food, you're signing up
     for a fresher, fitter, and happier you.
   </p>
-  <picture>
-    <source src="/images/jpg/hero-img.jpg" />
-    <img
-      class="hero-img"
-      src="/images/jpg/hero-img.jpg"
-      alt="a box full of vegetables"
-    />
-  </picture>
+  <div class="hero-img-container">
+    <picture>
+      <source srcset="/images/webp/hero-img.webp" type="image/webp" />
+      
+      <img
+        class="hero-img"
+        src="/images/jpg/hero-img.jpg"
+        alt="a box full of vegetables"
+      />
+    </picture>
+    <svg class="organic-svg">
+      <use href="/images/svg/icons.svg#icon-organic"></use>
+    </svg>
+  </div>
 </section>
