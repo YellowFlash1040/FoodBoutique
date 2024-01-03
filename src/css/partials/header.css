@@ -12,15 +12,11 @@
   fill: #e8e8e2;
   border-radius: 9px;
 }
-/* .logo:hover,
-.logo:focus {
-  fill: #6d8434;
-  background-color: #6d8434;
+.logo-text {
+  fill: black;
+  width: 116px;
+  height: 16px;
 }
-.logo:hover .logo-icon,
-.logo:focus .logo-icon {
-  background-color: #e8e8e2;
-} */
 .logo-icon {
   width: 28px;
   height: 28px;

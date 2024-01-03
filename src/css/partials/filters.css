@@ -1,3 +1,6 @@
+.filters-sect {
+  padding-bottom: 40px;
+}
 .filters-title {
   margin-bottom: 8px;
   color: rgba(1, 1, 1, 0.3);
@@ -7,27 +10,39 @@
   line-height: 1.28; /* 128.571% */
 }
 .field-label {
+  display: block;
   position: relative;
 }
 .field-label:not(:last-child) {
   margin-bottom: 12px;
 }
 .field {
-  display: block;
+  appearance: none;
   width: 100%;
   padding: 14px 20px;
   border-radius: 30px;
-}
-.field-1-2 {
   background-color: transparent;
-  border: 1px solid rgba(1, 1, 1, 0.30);
+  border: 1px solid rgba(1, 1, 1, 0.3);
+  outline: none;
 }
 .last-field {
+  background-color: white;
   border: none;
 }
-.own-placeholder {
+.field::placeholder {
+  color: #010101;
+}
+.input-icon {
+  pointer-events: none;
+  cursor: inherit;
+  width: 20px;
+  height: 20px;
   position: absolute;
   top: 50%;
-  left: 20px;
+  right: 20px;
   transform: translateY(-50%);
+}
+.stroke-icon {
+  stroke: black;
+  fill: transparent;
 }
