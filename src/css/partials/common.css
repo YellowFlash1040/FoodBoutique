@@ -1,11 +1,8 @@
 body {
+  font-family: "Neue Montreal", sans-serif;
   background-color: #e8e8e2;
 }
-.container {
-  max-width: 375px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+
 h1,
 h2,
 h3,
@@ -14,4 +11,59 @@ h5,
 h6,
 p {
   margin: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.list {
+  list-style: disc;
+}
+
+.link {
+  text-decoration: underline;
+}
+
+img,
+picture {
+  display: block;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.container {
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+    padding: 0 100px;
+  }
 }
