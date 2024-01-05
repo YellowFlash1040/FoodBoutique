@@ -66,8 +66,12 @@
           <input
             class="subscribe-form-email-field"
             type="email"
+            id="email"
+            name="email"
             placeholder="Email"
+            pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"
             required
+            autocomplete="email"
           />
           <button class="send-button" type="submit">Send</button>
         </form>
