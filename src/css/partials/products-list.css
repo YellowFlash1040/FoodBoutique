@@ -56,3 +56,30 @@
 .cart-logo.product {
   padding: 8px;
 }
+.nothing-found {
+  padding-top: 60px;
+  padding-bottom: 180px;
+  text-align: center;
+}
+.nothing-found-title {
+  max-width: 260px;
+  margin: 0 auto;
+  margin-bottom: 14px;
+  color: #010101;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.11; /* 111.111% */
+}
+.nothing-found-description {
+  max-width: 280px;
+  margin: 0 auto;
+  color: rgba(1, 1, 1, 0.7);
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28; /* 128.571% */
+}
+
+.display-none {
+  display: none;
+}

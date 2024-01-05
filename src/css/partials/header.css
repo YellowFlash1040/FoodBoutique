@@ -1,5 +1,6 @@
 .page-header {
   margin-top: 18px;
+  margin-bottom: 72px;
   display: flex;
   justify-content: space-between;
 }
@@ -39,19 +40,21 @@
 }
 .home-link:hover,
 .home-link:focus,
-.cart-link:hover,
-.cart-link:focus {
+.cart-btn:hover,
+.cart-btn:focus {
   background-color: #586f1f;
 }
-.cart-link {
-  display: inline-block;
+.cart-btn {
   width: 38px;
   height: 38px;
+  padding: 0;
+  border: none;
   border-radius: 50%;
   background-color: #6d8434;
   transition: background-color 200ms linear;
 }
 .cart-logo {
+  display: block;
   width: 100%;
   height: 100%;
   padding: 12px;
