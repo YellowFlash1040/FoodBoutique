@@ -1,3 +1,4 @@
+/*---------------- FOOTER ----------------*/
 footer {
     background-color: var(--green);
 
@@ -15,6 +16,19 @@ footer {
     display: flex;
     flex-direction: column;
     margin-bottom: 40px;
+}
+
+@media only screen and (min-width: 768px) {
+   .social-links-panel {
+    margin-bottom: 0;
+    margin-right: 78px;
+   }
+}
+
+@media only screen and (min-width: 1440px) {
+   .social-links-panel {
+    margin-right: 149px;
+   }
 }
 
 .footer-logo {
@@ -39,7 +53,6 @@ footer {
 
 .footer-logo-text-icon {
     fill: var(--grey);
-    background-color: red;
 }
 
 .social-media-list{
@@ -54,29 +67,76 @@ footer {
     border-radius: 10px;
     border: 1px solid var(--grey-30);
 
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    transition: background-color var(--transition-options);
+}
+
+.social-media-item:hover {
+    background-color: var(--grey-20);
+}
+
+.social-media-link {
+    display: block;
+    width: 40px;
+    height: 40px;
     padding: 8px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
 }
 
 .social-media-item-icon {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-
     fill: var(--grey);
 }
 /*End of Social links panel*/
 
-/* Slogan panel */
-.slogan-panel {
-    color: var(--grey-70);
-
-    font-size: 14px;
-    line-height: 1.29;
+.footer-middle-containers-wrapper {
+    display: flex;
+    flex-direction: column;
 
     margin-bottom: 80px;
+}
+
+@media only screen and (min-width: 768px) {
+   .footer-middle-containers-wrapper {
+    margin-bottom: 120px;
+   }
+}
+
+@media only screen and (min-width: 1440px) {
+    .footer-middle-containers-wrapper {
+        flex-direction: row;
+
+        margin-bottom: 128px;
+    }
+}
+
+/* Slogan panel */
+.slogan-panel {
+    margin-bottom: 80px;
+
+    max-width: 335px;
+}
+
+@media only screen and (min-width: 768px) {
+   .slogan-panel {
+    margin-bottom: 64px;
+
+    max-width: 429px;
+   }
+}
+
+@media only screen and (min-width: 1440px) {
+   .slogan-panel {
+    margin-bottom: 0px;
+    margin-right: 148px;
+
+    max-width: 410px;
+   }
 }
 
 .main-point-text {
@@ -90,17 +150,50 @@ footer {
     margin-bottom: 14px;
     display: block;
 }
+
+@media only screen and (min-width: 768px) {
+   .main-point-text {
+    font-size: 40px;
+    line-height: 1.1;
+   }
+}
+
+.slogan-text {
+    color: var(--grey-70);
+    
+    font-size: 14px;
+    line-height: 1.29;
+}
+
+@media only screen and (min-width: 768px) {
+    .slogan-text {
+        font-size: 18px;
+        line-height: 1.33;
+    }
+}
 /*End of Slogan panel*/
 
 /* Subscribe panel */
-.subscribe-to-new-products-panel {
-    margin-bottom: 80px;
-}
-
 .subscribe-form {
     display: flex;
     flex-direction: column;
     row-gap: 14px;
+
+    font-size: 14px;
+}
+
+@media only screen and (min-width: 768px) {
+   .subscribe-form {
+    row-gap: 20px;
+    max-width: 336px;
+    font-size: 16px;
+   }
+}
+
+@media only screen and (min-width: 1440px) {
+    .subscribe-form {
+        width: 336px;
+    }
 }
 
 .form-label {
@@ -112,20 +205,34 @@ footer {
     margin-bottom: 20px;
 }
 
-.form-field {
+@media only screen and (min-width: 768px) {
+   .form-label {
+    font-size: 18px;
+    line-height: 1.33;
+   }
+}
+
+.subscribe-form-email-field {
     border-radius: 30px;
     border: 1px solid var(--grey);
 
     padding: 12px 18px;
 
     background-color: transparent;
+
+    color: var(--grey);
+
+    line-height: 1.29;
 }
 
-.form-field::placeholder {
-    color: var(--grey-60);
+@media only screen and (min-width: 768px) {
+   .subscribe-form-email-field {
+    line-height: 1.5;
+   }
+}
 
-    font-size: 14px;
-    line-height: 1.29;
+.subscribe-form-email-field::placeholder {
+    color: var(--grey-60);
 }
 
 .send-button {
@@ -141,9 +248,22 @@ footer {
 
     min-width: 335px;
 
-    font-weight: 500;
-    font-size: 14px;
     line-height: 1.29;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: color var(--transition-options);
+}
+
+@media only screen and (min-width: 768px) {
+    .send-button {
+        line-height: 1.5;
+    }
+}
+
+.send-button:hover {
+    color: var(--green);
 }
 /*End of Subscribe panel*/
 
@@ -153,16 +273,43 @@ footer {
     flex-direction: column;
     row-gap: 8px;
 
+    width: 100%;
+
     color: var(--grey);
 
     font-size: 14px;
     line-height: 1.29;
 }
 
-.rights-label {}
+@media only screen and (min-width: 768px) {
+   .privacy-policy-and-rights-panel {
+    flex-direction: row;
+    justify-content: space-between;
+   }
+}
 
-.privacy-policy-label {
+.privacy-policy-links-container {
     display: flex;
     column-gap: 8px;
 }
+
+.privacy-policy-link {
+    color: var(--grey);
+
+    font-size: 14px;
+    line-height: 1.29;
+
+    cursor: pointer;
+}
+
+.terms-of-service-link {
+    color: var(--grey);
+    
+    font-size: 14px;
+    line-height: 1.29;
+
+    cursor: pointer;
+}
 /*End of Privacy policy panel*/
+
+/*---------------- End of FOOTER ----------------*/
