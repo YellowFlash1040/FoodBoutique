@@ -7,18 +7,24 @@ const categorySelect = form.elements.category;
 // const priceAndPopularitySelect = form.elements.priceAndPopularity;
 
 // Products List Section
-const products = document.getElementById("products");
+const productsList = document.getElementById("products");
+const pagesPanel = document.getElementById("pages-panel");
+const toTheStartBtn = document.getElementById("to-the-start");
 const previousBtn = document.getElementById("previous");
+const pagesList = document.getElementById("pages-list");
 const nextBtn = document.getElementById("next");
+const toTheEnd = document.getElementById("to-the-end");
 const nothingFound = document.getElementById("nothing-found");
 
 // AXIOS
 axios.defaults.baseURL = "https://food-boutique.b.goit.study/api/";
 
 let totalPages = null;
+let pagesMax = 3;
 
 await fillCategories();
 
+// Set default filters or restore filters
 const filters = getFilters();
 if (!filters) {
   const filters = {
@@ -39,16 +45,91 @@ if (!filters) {
   }
 }
 
+// first products for the first time
 await fillProductsList();
 
 // Fills products list
 async function fillProductsList() {
-  const hits = await searchProducts(getFilters());
+  const filters = getFilters();
+  const hits = await searchProducts(filters);
 
+  // If nothing is found show nothing found div
   if (hits.length > 0) {
     hideNothingFound();
     createCardsForProductsList(hits);
   } else showNothingFound();
+
+  // change buttons state depending on the opened page
+  if (filters.page === 1) disablePreviousBtn();
+  else enablePreviousBtn();
+  if (filters.page === totalPages) disableNextBtn();
+  else enableNextBtn();
+
+  // fill pages list if there's more than one page
+  if (totalPages <= 1) pagesPanel.classList.add("display-none");
+  else {
+    pagesPanel.classList.remove("display-none");
+    fillPagesList(filters);
+  }
+}
+
+// fill pages list
+function fillPagesList(filters) {
+  const numbers = [];
+
+  const min = Math.min(totalPages, pagesMax);
+
+  for (let i = 1; i <= min; i++) {
+    const li = document.createElement("li");
+    li.className = "pages-item";
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className =
+      "circle-btn number-btn " + (filters.page === i ? "current" : "");
+    btn.innerHTML = i;
+    btn.addEventListener("click", goToPage);
+
+    function goToPage() {
+      setFilters({ ...filters, page: i });
+      fillProductsList();
+    }
+
+    li.appendChild(btn);
+
+    numbers.push(li);
+  }
+
+  pagesList.innerHTML = "";
+  pagesList.append(...numbers);
+}
+
+function disablePreviousBtn() {
+  toTheStartBtn.classList.add("disabled");
+  previousBtn.classList.add("disabled");
+  previousBtn.removeEventListener("click", goToPreviousPage);
+  toTheStartBtn.removeEventListener("click", goToFirstPage);
+}
+
+function enablePreviousBtn() {
+  toTheStartBtn.classList.remove("disabled");
+  previousBtn.classList.remove("disabled");
+  previousBtn.addEventListener("click", goToPreviousPage);
+  toTheStartBtn.addEventListener("click", goToFirstPage);
+}
+
+function disableNextBtn() {
+  toTheEnd.classList.add("disabled");
+  nextBtn.classList.add("disabled");
+  nextBtn.removeEventListener("click", goToNextPage);
+  toTheEnd.removeEventListener("click", goToLastPage);
+}
+
+function enableNextBtn() {
+  toTheEnd.classList.remove("disabled");
+  nextBtn.classList.remove("disabled");
+  nextBtn.addEventListener("click", goToNextPage);
+  toTheEnd.addEventListener("click", goToLastPage);
 }
 
 async function fillCategories() {
@@ -98,7 +179,7 @@ function createCardsForProductsList(hits) {
       <h3 class="product-title">${hit.name}</h3>
       <ul class="product-properties-list">
         <li class="product-properties-item">
-          Category: <span class="property-value">${hit.category}</span>
+          Category: <span class="property-value">${hit.category.replaceAll("_", " ")}</span>
         </li>
         <li class="product-properties-item">
           Size: <span class="property-value">${hit.size}</span>
@@ -110,8 +191,8 @@ function createCardsForProductsList(hits) {
 
       <div class="price-and-buy-btn">
         <span class="price">$${hit.price}</span>
-        <button class="cart-btn" href="./">
-          <svg class="cart-logo product">
+        <button class="cart-btn circle-btn" href="./">
+          <svg class="btn-svg product">
             <use href="/images/svg/icons.svg#icon-shopping-cart"></use>
           </svg>
         </button>
@@ -121,8 +202,8 @@ function createCardsForProductsList(hits) {
     items.push(li);
   }
 
-  products.innerHTML = "";
-  products.append(...items);
+  productsList.innerHTML = "";
+  productsList.append(...items);
 }
 
 // submit
@@ -149,13 +230,8 @@ function getFilters() {
   return JSON.parse(localStorage.getItem("filters"));
 }
 
-previousBtn.addEventListener("click", goToPreviousPage);
-nextBtn.addEventListener("click", goToNextPage);
-
 function goToPreviousPage() {
   const currentFilters = getFilters();
-
-  if (currentFilters.page <= 1) return;
 
   currentFilters.page--;
   setFilters(currentFilters);
@@ -166,10 +242,25 @@ function goToPreviousPage() {
 function goToNextPage() {
   const currentFilters = getFilters();
 
-  const counter = totalPages - currentFilters.page;
-  if (counter === 0) return;
-
   currentFilters.page++;
+  setFilters(currentFilters);
+
+  fillProductsList();
+}
+
+function goToFirstPage() {
+  const currentFilters = getFilters();
+
+  currentFilters.page = 1;
+  setFilters(currentFilters);
+
+  fillProductsList();
+}
+
+function goToLastPage() {
+  const currentFilters = getFilters();
+
+  currentFilters.page = totalPages;
   setFilters(currentFilters);
 
   fillProductsList();
@@ -183,7 +274,7 @@ function hideNothingFound() {
 }
 
 function showNothingFound() {
-  products.innerHTML = "";
+  productsList.innerHTML = "";
 
   nothingFound.classList.remove("display-none");
 
