@@ -35,6 +35,7 @@ a {
 img,
 picture {
   display: block;
+  max-width: 100%;
 }
 
 .visually-hidden {

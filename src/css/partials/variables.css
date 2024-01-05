@@ -2,6 +2,7 @@
     --green: #6D8434;
     --orange: #FDC152;
     --grey: #E8E8E2;
+    --grey-20: rgb(232, 232, 226, 0.2);
     --grey-30: rgb(232, 232, 226, 0.3);
     --grey-60: rgb(232, 232, 226, 0.6);
     --grey-70: rgb(232, 232, 226, 0.7);
@@ -10,4 +11,6 @@
     --black-30: rgb(1, 1, 1, 0.3);
     --black-70: rgb(1, 1, 1, 0.7);
     --black-80: rgb(1, 1, 1, 0.8);
+
+    --transition-options: 250ms ease-in-out;
 }
