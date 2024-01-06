@@ -32,6 +32,10 @@ a {
   text-decoration: underline;
 }
 
+button {
+  cursor: pointer;
+}
+
 img,
 picture {
   display: block;

@@ -13,9 +13,10 @@
 .field-label {
   display: block;
   position: relative;
-}
-.field-label:not(:last-child) {
-  margin-bottom: 12px;
+  color: #010101;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28; /* 128.571% */
 }
 .field {
   appearance: none;
@@ -46,4 +47,26 @@
 .stroke-icon {
   stroke: black;
   fill: transparent;
+}
+
+@media screen and (max-width: 767px) {
+  .field-label:not(:last-child) {
+    margin-bottom: 12px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .field-label {
+    display: inline-block;
+    width: 268px;
+    margin-right: 4px;
+    font-size: 18px;
+    line-height: 1.33;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .filters-sect {
+    padding-bottom: 30px;
+  }
 }

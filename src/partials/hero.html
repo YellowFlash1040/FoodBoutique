@@ -8,15 +8,26 @@
   </p>
   <div class="hero-img-container">
     <picture>
-      <source srcset="/images/webp/hero-img.webp" type="image/webp" />
-      
+      <source
+        srcset="/images/jpg/hero-desctop.jpg"
+        media="(min-width: 1440px)"
+      />
+      <source
+        srcset="/images/jpg/hero-img-tablet.jpg"
+        media="(min-width: 768px)"
+      />
+
       <img
         class="hero-img"
         src="/images/jpg/hero-img.jpg"
         alt="a box full of vegetables"
       />
     </picture>
-    <!-- <img src="/images/png/discount.png" alt="discount logo"> -->
-    <img class="organic-img" src="/images/png/organic.png" alt="organic food logo">
+
+    <img
+      class="organic-img"
+      src="/images/png/organic.png"
+      alt="organic food logo"
+    />
   </div>
 </section>

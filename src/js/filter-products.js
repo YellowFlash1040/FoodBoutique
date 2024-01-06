@@ -175,27 +175,32 @@ function createCardsForProductsList(hits) {
     const li = document.createElement("li");
     li.className = "products-item";
     li.innerHTML = `
-      <img class="prodact-img" src="${hit.img}" alt="${hit.name}" />
+      <div class="card-img-container">
+        <img class="prodact-img" src="${hit.img}" alt="${hit.name}" />
+      </div>
       <h3 class="product-title">${hit.name}</h3>
-      <ul class="product-properties-list">
-        <li class="product-properties-item">
-          Category: <span class="property-value">${hit.category.replaceAll("_", " ")}</span>
-        </li>
-        <li class="product-properties-item">
-          Size: <span class="property-value">${hit.size}</span>
-        </li>
-        <li class="product-properties-item">
-          Popularity: <span class="property-value">${hit.popularity}</span>
-        </li>
-      </ul>
+      <div class="properties-and-price-continer">
+        <ul class="product-properties-list">
+          <li class="product-properties-item">
+            Category:
+            <span class="property-value">${hit.category.replaceAll("_", " ")}</span>
+          </li>
+          <li class="product-properties-item">
+            Size: <span class="property-value">${hit.size}</span>
+          </li>
+          <li class="product-properties-item">
+            Popularity: <span class="property-value">${hit.popularity}</span>
+          </li>
+        </ul>
 
-      <div class="price-and-buy-btn">
-        <span class="price">$${hit.price}</span>
-        <button class="cart-btn circle-btn" href="./">
-          <svg class="btn-svg product">
-            <use href="/images/svg/icons.svg#icon-shopping-cart"></use>
-          </svg>
-        </button>
+        <div class="price-and-buy-btn">
+          <span class="price">$${hit.price}</span>
+          <button class="circle-btn cart-btn product" href="./">
+            <svg class="btn-svg product">
+              <use href="/images/svg/icons.svg#icon-shopping-cart"></use>
+            </svg>
+          </button>
+        </div>
       </div>
     `;
 
