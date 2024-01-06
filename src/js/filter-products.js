@@ -4,7 +4,6 @@ import axios from "axios";
 const form = document.getElementById("filters-form");
 const keywordInput = form.elements.keyword;
 const categorySelect = form.elements.category;
-// const priceAndPopularitySelect = form.elements.priceAndPopularity;
 
 // Products List Section
 const productsList = document.getElementById("products");
@@ -20,33 +19,42 @@ const nothingFound = document.getElementById("nothing-found");
 axios.defaults.baseURL = "https://food-boutique.b.goit.study/api/";
 
 let totalPages = null;
-let pagesMax = 3;
+let pagesMax = null;
+let firstPage = 1;
 
-await fillCategories();
+let timerId = null;
 
-// Set default filters or restore filters
-const filters = getFilters();
-if (!filters) {
-  const filters = {
-    keyword: null,
-    category: null,
-    page: 1,
-    limit: 6,
-  };
-  setFilters(filters);
-} else {
-  keywordInput.value = filters.keyword;
+// Start application
+await start();
 
-  for (let i = 0; i < categorySelect.options.length; i++) {
-    if (categorySelect.options[i].value === filters.category) {
-      categorySelect.options[i].selected = true;
-      break;
+async function start() {
+  await fillCategories();
+
+  // Set default filters or restore filters
+  const filters = getFilters();
+  if (!filters) {
+    setFilters({
+      keyword: null,
+      category: null,
+      page: 1,
+      limit: 6,
+    });
+  } else {
+    keywordInput.value = filters.keyword;
+
+    for (let i = 0; i < categorySelect.options.length; i++) {
+      if (categorySelect.options[i].value === filters.category) {
+        categorySelect.options[i].selected = true;
+        break;
+      }
     }
   }
-}
 
-// first products for the first time
-await fillProductsList();
+  // first products for the first time
+  setParamsBasedOnScreenSize();
+
+  window.addEventListener("resize", onResize);
+}
 
 // Fills products list
 async function fillProductsList() {
@@ -77,9 +85,16 @@ async function fillProductsList() {
 function fillPagesList(filters) {
   const numbers = [];
 
-  const min = Math.min(totalPages, pagesMax);
+  const btnsAmount = Math.min(totalPages, pagesMax);
 
-  for (let i = 1; i <= min; i++) {
+  // If selected index is grater than last button change first page
+  const indexOfLastButton = btnsAmount + firstPage - 1;
+  const distanceBetweenLastBtnAndSelectedIndex =
+    filters.page - indexOfLastButton;
+  if (distanceBetweenLastBtnAndSelectedIndex > 0)
+    firstPage += distanceBetweenLastBtnAndSelectedIndex;
+
+  for (let i = firstPage; i < btnsAmount + firstPage; i++) {
     const li = document.createElement("li");
     li.className = "pages-item";
 
@@ -183,7 +198,10 @@ function createCardsForProductsList(hits) {
         <ul class="product-properties-list">
           <li class="product-properties-item">
             Category:
-            <span class="property-value">${hit.category.replaceAll("_", " ")}</span>
+            <span class="property-value">${hit.category.replaceAll(
+              "_",
+              " "
+            )}</span>
           </li>
           <li class="product-properties-item">
             Size: <span class="property-value">${hit.size}</span>
@@ -241,6 +259,12 @@ function goToPreviousPage() {
   currentFilters.page--;
   setFilters(currentFilters);
 
+  if (firstPage - 1 === currentFilters.page) {
+    firstPage--;
+  }
+
+  if (currentFilters.page === 1) disablePreviousBtn();
+
   fillProductsList();
 }
 
@@ -249,6 +273,13 @@ function goToNextPage() {
 
   currentFilters.page++;
   setFilters(currentFilters);
+
+  const btnsAmount = Math.min(totalPages, pagesMax);
+  if (firstPage + btnsAmount === currentFilters.page) {
+    firstPage++;
+  }
+
+  if (currentFilters.page === totalPages) disableNextBtn();
 
   fillProductsList();
 }
@@ -259,6 +290,8 @@ function goToFirstPage() {
   currentFilters.page = 1;
   setFilters(currentFilters);
 
+  firstPage = 1;
+
   fillProductsList();
 }
 
@@ -267,6 +300,9 @@ function goToLastPage() {
 
   currentFilters.page = totalPages;
   setFilters(currentFilters);
+
+  const btnsAmount = Math.min(totalPages, pagesMax);
+  firstPage = currentFilters.page - btnsAmount + 1;
 
   fillProductsList();
 }
@@ -285,4 +321,30 @@ function showNothingFound() {
 
   previousBtn.classList.add("display-none");
   nextBtn.classList.add("display-none");
+}
+
+// Gets the size of the screen, sets parameters and fills the products list
+function setParamsBasedOnScreenSize() {
+  let windowWidth = window.innerWidth;
+
+  if (windowWidth >= 1440) {
+    setFilters({ ...getFilters(), limit: 9 });
+    pagesMax = 5;
+  } else if (windowWidth >= 768) {
+    setFilters({ ...getFilters(), limit: 8 });
+    pagesMax = 5;
+  } else {
+    setFilters({ ...getFilters(), limit: 6 });
+    pagesMax = 3;
+  }
+
+  fillProductsList();
+}
+
+function onResize() {
+  clearTimeout(timerId);
+  timerId = setTimeout(() => {
+    setParamsBasedOnScreenSize();
+    console.log("change");
+  }, 100);
 }

@@ -27,10 +27,6 @@
   border: 1px solid rgba(1, 1, 1, 0.3);
   outline: none;
 }
-.last-field {
-  background-color: white;
-  border: none;
-}
 .field::placeholder {
   color: #010101;
 }
