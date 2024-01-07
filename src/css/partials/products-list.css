@@ -66,8 +66,10 @@
 .cart-btn.product {
   width: 34px;
   height: 34px;
-  /* stroke: #E8E8E2;
-  fill: transparent; */
+}
+.cart-btn.product.stroke {
+  stroke: var(--grey);
+  fill: transparent;
 }
 .btn-svg.product {
   padding: 8px;

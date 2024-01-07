@@ -88,10 +88,12 @@ function createCardsForProductsList(hits) {
 
     let dataProductId = `data-product-id="${hit._id}"`;
     let svgUrl = "/images/svg/icons.svg#icon-shopping-cart";
+    let stroke = "";
 
     if (getInCart().includes(hit._id)) {
       dataProductId = "";
       svgUrl = "/images/svg/icons.svg#icon-check";
+      stroke = "stroke";
     }
 
     li.innerHTML = `
@@ -118,7 +120,7 @@ function createCardsForProductsList(hits) {
 
         <div class="price-and-buy-btn">
           <span class="price">$${hit.price}</span>
-          <button class="circle-btn cart-btn product" type="button" ${dataProductId}>
+          <button class="circle-btn cart-btn product ${stroke}" type="button" ${dataProductId}>
             <svg class="btn-svg product">
               <use href="${svgUrl}"></use>
             </svg>
@@ -150,6 +152,7 @@ function createCardsForProductsList(hits) {
       </svg>
     `;
     btn.removeEventListener("click", toCartClick);
+    btn.classList.add("stroke");
   }
 }
 
