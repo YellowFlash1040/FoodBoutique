@@ -1,12 +1,13 @@
-import {
-  keywordInput,
-  productsList,
-  pagesPanel,
-  previousBtn,
-  nextBtn,
-  nothingFound,
-  quantitySpan
-} from "./elements";
+// Filters Section
+const keywordInput = document.getElementById("keyword-input");
+
+// Products List Section
+const productsList = document.getElementById("products");
+const pagesPanel = document.getElementById("pages-panel");
+const previousBtn = document.getElementById("previous");
+const nextBtn = document.getElementById("next");
+const nothingFound = document.getElementById("nothing-found");
+
 import { getFilters, setFilters } from "./filters";
 import { getInCart } from "./cart";
 import {
@@ -151,8 +152,4 @@ function createCardsForProductsList(hits) {
     btn.removeEventListener("click", toCartClick);
     btn.classList.add("stroke");
   }
-}
-
-export function showCartAmount() {
-  quantitySpan.innerText = `cart (${getInCart().length})`;
 }

@@ -1,3 +1,6 @@
+// Cart quantity
+const quantitySpan = document.getElementById("cart-quantity");
+
 if (!getInCart()) setInCart();
 
 export function getInCart() {
@@ -14,4 +17,8 @@ export function addToCart(id) {
 
 export function clearCart() {
   setInCart([]);
+}
+
+export function showCartAmount() {
+  quantitySpan.innerText = `cart (${getInCart().length})`;
 }

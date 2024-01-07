@@ -1,4 +1,7 @@
-import { form, categorySelect, categoriesList } from "./elements";
+const form = document.getElementById("filters-form");
+const categorySelect = document.getElementById("category-select");
+const categoriesList = document.getElementById("categories");
+
 import { getAndShowProducts } from "./products";
 import { getFilters, setFilters } from "./filters";
 import { setParamsBasedOnScreenSize } from "./pages";

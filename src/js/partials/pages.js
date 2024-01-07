@@ -1,4 +1,9 @@
-import { toTheStartBtn, previousBtn, pagesList, nextBtn, toTheEnd } from "./elements";
+const toTheStartBtn = document.getElementById("to-the-start");
+const previousBtn = document.getElementById("previous");
+const pagesList = document.getElementById("pages-list");
+const nextBtn = document.getElementById("next");
+const toTheEnd = document.getElementById("to-the-end");
+
 import { setFilters, getFilters } from "./filters";
 import { fillProductsList } from "./products";
 

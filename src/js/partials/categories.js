@@ -1,4 +1,5 @@
-import { categoriesList } from "./elements";
+const categoriesList = document.getElementById("categories");
+
 import { getCategories } from "./requests";
 
 export async function fillCategories() {

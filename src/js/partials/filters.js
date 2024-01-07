@@ -1,4 +1,4 @@
-import { keywordInput } from "./elements";
+const keywordInput = document.getElementById("keyword-input");
 
 const filters = getFilters();
 if (!filters) {
