@@ -2,8 +2,6 @@ import { toTheStartBtn, previousBtn, pagesList, nextBtn, toTheEnd } from "./elem
 import { setFilters, getFilters } from "./filters";
 import { fillProductsList } from "./products";
 
-let timerId = null;
-
 let totalPages = null;
 let pagesMax = null;
 let firstPage = 1;
@@ -19,7 +17,6 @@ export function setTotalPages(pages) {
 export function fillPagesList(filters) {
   const numbers = [];
 
-  console.log(getTotalPages());
   const btnsAmount = Math.min(getTotalPages(), pagesMax);
 
   // If selected index is grater than last button change first page
@@ -134,15 +131,6 @@ function goToLastPage() {
   firstPage = currentFilters.page - btnsAmount + 1;
 
   fillProductsList();
-}
-
-window.addEventListener("resize", onResize);
-
-function onResize() {
-  clearTimeout(timerId);
-  timerId = setTimeout(() => {
-    setParamsBasedOnScreenSize();
-  }, 100);
 }
 
 export function setParamsBasedOnScreenSize() {

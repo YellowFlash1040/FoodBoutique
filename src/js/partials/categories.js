@@ -46,27 +46,3 @@ function createCategories(categories) {
     </li>
   `;
 }
-
-categorySelect.addEventListener("mousedown", onSelectClick);
-
-function onSelectClick(evt) {
-  evt.preventDefault();
-  categoriesList.classList.toggle("display-none");
-}
-
-categoriesList.addEventListener("click", onCategorySelect);
-
-function onCategorySelect(evt) {
-  const target = evt.target;
-
-  if (target.nodeName.toLowerCase() === "button") {
-    setFilters({
-      ...getFilters(),
-      category: target.getAttribute("data-value"),
-    });
-    categoriesList.classList.add("display-none");
-    getAndShowProducts();
-  }
-}
-
-

@@ -1,5 +1,4 @@
-import { form, keywordInput } from "./elements";
-import { getAndShowProducts } from "./products";
+import { keywordInput } from "./elements";
 
 const filters = getFilters();
 if (!filters) {
@@ -19,14 +18,4 @@ export function setFilters(filters) {
 
 export function getFilters() {
   return JSON.parse(localStorage.getItem("filters"));
-}
-
-// submit
-form.addEventListener("submit", handleForm);
-// change
-form.addEventListener("input", handleForm);
-
-async function handleForm(evt) {
-  evt.preventDefault();
-  getAndShowProducts();
 }
