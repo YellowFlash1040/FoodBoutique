@@ -10,7 +10,7 @@
 .products-item {
   padding: 20px;
   border-radius: 20px;
-  background-color: #FAFAFA;
+  background-color: var(--white);
 }
 .card-img-container {
   display: flex;
@@ -19,14 +19,14 @@
   height: 178px;
   border-radius: 10px;
   margin-bottom: 20px;
-  background-color: #e8e8e2;
+  background-color: var(--grey);
 }
 .prodact-img {
   width: 140px;
   height: 140px;
 }
 .product-title {
-  color: #010101;
+  color: var(--black);
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11; /* 111.111% */
@@ -50,7 +50,7 @@
   line-height: 1.16; /* 116.667% */
 }
 .property-value {
-  color: #010101;
+  color: var(--black);
 }
 .price-and-buy-btn {
   display: flex;
@@ -58,7 +58,7 @@
   align-items: end;
 }
 .price {
-  color: #010101;
+  color: var(--black);
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11; /* 111.111% */
@@ -83,7 +83,7 @@
   width: 260px;
   margin: 0 auto;
   margin-bottom: 14px;
-  color: #010101;
+  color: var(--black);
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11; /* 111.111% */
@@ -110,7 +110,7 @@
 .turn-page-btn {
   width: 40px;
   height: 40px;
-  background-color: #fafafa;
+  background-color: var(--white);
   fill: transparent;
   stroke: #a3a3a3;
 }
@@ -128,8 +128,8 @@
   color: #a3a3a3;
 }
 .number-btn.current {
-  background-color: #6d8434;
-  color: #e8e8e2;
+  background-color: var(--green);
+  color: var(--grey);
 }
 
 .display-none {

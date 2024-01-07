@@ -13,7 +13,7 @@
 .field-label {
   display: block;
   position: relative;
-  color: #010101;
+  color: var(--black);
   font-size: 14px;
   font-weight: 400;
   line-height: 1.28; /* 128.571% */
@@ -28,7 +28,7 @@
   outline: none;
 }
 .field::placeholder {
-  color: #010101;
+  color: var(--black);
 }
 .input-icon {
   pointer-events: none;
@@ -56,7 +56,7 @@
     0px 20px 69px 0px rgba(0, 0, 0, 0.07);
 }
 .categories-item {
-  color: #010101;
+  color: var(--black);
   font-size: 14px;
   font-weight: 400;
   line-height: 1.28; /* 128.571% */

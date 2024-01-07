@@ -8,12 +8,12 @@
   font-weight: 500;
   font-family: "Neue Montreal";
   text-align: center;
-  color: #010101;
+  color: var(--black);
   line-height: 1.1;
   letter-spacing: -0.88px;
 }
 .accent {
-  color: #6d8434;
+  color: var(--green);
 }
 .hero-desc {
   max-width: 292px;
