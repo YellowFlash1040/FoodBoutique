@@ -1,4 +1,8 @@
 import axios from "axios";
+import { addToCart, getInCart } from "./add-to-cart";
+
+// Cart quantity
+const quantitySpan = document.getElementById("cart-quantity");
 
 // Filters Section
 const form = document.getElementById("filters-form");
@@ -29,6 +33,8 @@ let timerId = null;
 await start();
 
 async function start() {
+  showCartAmount();
+
   await fillCategories();
 
   // Set default filters or restore filters
@@ -157,7 +163,6 @@ function createCategories(categories) {
   for (const category of categories) {
     const li = document.createElement("li");
     li.className = "categories-item";
-    // li.data
     li.value = category;
 
     const btn = document.createElement("button");
@@ -197,6 +202,15 @@ function createCardsForProductsList(hits) {
   for (const hit of hits) {
     const li = document.createElement("li");
     li.className = "products-item";
+
+    let dataProductId = `data-product-id="${hit._id}"`;
+    let svgUrl = "/images/svg/icons.svg#icon-shopping-cart";
+
+    if (getInCart().includes(hit._id)) {
+      dataProductId = "";
+      svgUrl = "/images/svg/icons.svg#icon-check";
+    }
+
     li.innerHTML = `
       <div class="card-img-container">
         <img class="prodact-img" src="${hit.img}" alt="${hit.name}" />
@@ -221,9 +235,9 @@ function createCardsForProductsList(hits) {
 
         <div class="price-and-buy-btn">
           <span class="price">$${hit.price}</span>
-          <button class="circle-btn cart-btn product" href="./">
+          <button class="circle-btn cart-btn product" type="button" ${dataProductId}>
             <svg class="btn-svg product">
-              <use href="/images/svg/icons.svg#icon-shopping-cart"></use>
+              <use href="${svgUrl}"></use>
             </svg>
           </button>
         </div>
@@ -235,6 +249,29 @@ function createCardsForProductsList(hits) {
 
   productsList.innerHTML = "";
   productsList.append(...items);
+
+  const btns = document.querySelectorAll("button[data-product-id]");
+
+  for (const btn of btns) {
+    btn.addEventListener("click", toCartClick);
+  }
+
+  function toCartClick(evt) {
+    const btn = evt.currentTarget;
+    const id = btn.getAttribute("data-product-id");
+    addToCart(id);
+    showCartAmount();
+    btn.innerHTML = `
+      <svg class="btn-svg product">
+        <use href="/images/svg/icons.svg#icon-check"></use>
+      </svg>
+    `;
+    btn.removeEventListener("click", toCartClick);
+  }
+}
+
+function showCartAmount() {
+  quantitySpan.innerText = `cart (${getInCart().length})`;
 }
 
 // submit
@@ -371,7 +408,10 @@ function onCategorySelect(evt) {
   const target = evt.target;
 
   if (target.nodeName.toLowerCase() === "button") {
-    setFilters({ ...getFilters(), category: target.getAttribute("data-value") });
+    setFilters({
+      ...getFilters(),
+      category: target.getAttribute("data-value"),
+    });
     categoriesList.classList.add("display-none");
     getAndShowProducts();
   }

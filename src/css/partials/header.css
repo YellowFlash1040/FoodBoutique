@@ -44,6 +44,11 @@
 .cart-btn:focus {
   background-color: #586f1f;
 }
+.cart-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
 .cart-btn {
   width: 38px;
   height: 38px;
@@ -52,6 +57,14 @@
 }
 .cart-btn-svg {
   padding: 12px;
+}
+.cart-logo-span {
+  display: none;
+  color: #010101;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.33; /* 133.333% */
+  text-transform: uppercase;
 }
 
 .circle-btn {
@@ -70,11 +83,23 @@
     padding-top: 24px;
     padding-bottom: 24px;
   }
+  .nav {
+    gap: 16px;
+  }
   .logo-icon {
     width: 32px;
     height: 32px;
   }
   .logo {
-    font-size: 22px;
+    font-size: 24px;
+  }
+  .cart-logo-span {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .nav {
+    gap: 24px;
   }
 }
