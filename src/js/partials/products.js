@@ -20,6 +20,7 @@ import {
   setTotalPages,
 } from "./pages";
 import { fillPagesList } from "./pages";
+import { addToCart } from "./cart";
 
 export async function fillProductsList() {
   const filters = getFilters();
