@@ -39,6 +39,7 @@ button {
 img,
 picture {
   display: block;
+  max-width: 100%;
 }
 
 .visually-hidden {
@@ -50,24 +51,4 @@ picture {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
-}
-
-.container {
-  max-width: 375px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 768px;
-    padding: 0 32px;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .container {
-    max-width: 1440px;
-    padding: 0 100px;
-  }
 }
