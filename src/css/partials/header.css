@@ -41,7 +41,9 @@
 .home-link:hover,
 .home-link:focus,
 .cart-btn:hover,
-.cart-btn:focus {
+.cart-btn:focus,
+.cart-logo:hover .cart-btn,
+.cart-logo:focus .cart-btn {
   background-color: #586f1f;
 }
 .cart-logo {
