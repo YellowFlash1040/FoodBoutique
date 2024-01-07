@@ -4,6 +4,7 @@ import axios from "axios";
 const form = document.getElementById("filters-form");
 const keywordInput = form.elements.keyword;
 const categorySelect = form.elements.category;
+const categoriesList = document.getElementById("categories");
 
 // Products List Section
 const productsList = document.getElementById("products");
@@ -41,13 +42,6 @@ async function start() {
     });
   } else {
     keywordInput.value = filters.keyword;
-
-    for (let i = 0; i < categorySelect.options.length; i++) {
-      if (categorySelect.options[i].value === filters.category) {
-        categorySelect.options[i].selected = true;
-        break;
-      }
-    }
   }
 
   // first products for the first time
@@ -161,16 +155,30 @@ function createCategories(categories) {
   const options = [];
 
   for (const category of categories) {
-    const option = document.createElement("option");
-    option.className = "categories-option";
-    option.value = category;
-    option.innerHTML = category.replaceAll("_", " ");
-    options.push(option);
+    const li = document.createElement("li");
+    li.className = "categories-item";
+    // li.data
+    li.value = category;
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "categories-btn";
+    btn.setAttribute("data-value", category);
+    btn.innerText = category.replaceAll("_", " ");
+
+    li.appendChild(btn);
+
+    options.push(li);
   }
 
-  categorySelect.append(...options);
-  categorySelect.innerHTML += `
-    <option class="categories-option" value="">Show all</option>
+  categoriesList.append(...options);
+
+  categoriesList.innerHTML += `
+    <li class="categories-item">
+      <button class="categories-btn" data-value="">
+        Show all
+      </button>
+    </li>
   `;
 }
 
@@ -236,11 +244,13 @@ form.addEventListener("input", handleForm);
 
 async function handleForm(evt) {
   evt.preventDefault();
+  getAndShowProducts();
+}
 
+function getAndShowProducts() {
   const keyword = keywordInput.value.trim();
-  const category = categorySelect.value;
 
-  setFilters({ ...getFilters(), keyword, category, page: 1 });
+  setFilters({ ...getFilters(), keyword, page: 1 });
 
   fillProductsList();
 }
@@ -345,6 +355,24 @@ function onResize() {
   clearTimeout(timerId);
   timerId = setTimeout(() => {
     setParamsBasedOnScreenSize();
-    console.log("change");
   }, 100);
+}
+
+categorySelect.addEventListener("mousedown", onSelectClick);
+
+function onSelectClick(evt) {
+  evt.preventDefault();
+  categoriesList.classList.toggle("display-none");
+}
+
+categoriesList.addEventListener("click", onCategorySelect);
+
+function onCategorySelect(evt) {
+  const target = evt.target;
+
+  if (target.nodeName.toLowerCase() === "button") {
+    setFilters({ ...getFilters(), category: target.getAttribute("data-value") });
+    categoriesList.classList.add("display-none");
+    getAndShowProducts();
+  }
 }
