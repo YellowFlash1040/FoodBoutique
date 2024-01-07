@@ -1,20 +1,9 @@
-import axios from "axios";
-
-import { categorySelect, categoriesList } from "./elements";
-import { getFilters, setFilters } from "./filters";
-import { getAndShowProducts } from "./products";
-
-// AXIOS
-axios.defaults.baseURL = "https://food-boutique.b.goit.study/api/";
+import { categoriesList } from "./elements";
+import { getCategories } from "./requests";
 
 export async function fillCategories() {
   const categories = await getCategories();
   createCategories(categories);
-}
-
-async function getCategories() {
-  const res = await axios.get("products/categories");
-  return res.data;
 }
 
 function createCategories(categories) {

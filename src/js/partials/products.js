@@ -1,5 +1,3 @@
-import axios from "axios";
-
 import {
   keywordInput,
   productsList,
@@ -21,6 +19,7 @@ import {
 } from "./pages";
 import { fillPagesList } from "./pages";
 import { addToCart } from "./cart";
+import { getProducts } from "./requests";
 
 export async function fillProductsList() {
   const filters = getFilters();
@@ -47,9 +46,7 @@ export async function fillProductsList() {
 }
 
 async function searchProducts(filters) {
-  const res = await axios.get("products", {
-    params: filters,
-  });
+  const res = await getProducts(filters);
   setTotalPages(res.data.totalPages);
   const hits = res.data.results;
   return hits;
