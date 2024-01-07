@@ -11,3 +11,7 @@ export function setInCart(inCart = []) {
 export function addToCart(id) {
   setInCart([...getInCart(), id]);
 }
+
+export function clearCart() {
+  setInCart([]);
+}
