@@ -19,8 +19,9 @@ import {
   setTotalPages,
 } from "./pages";
 import { fillPagesList } from "./pages";
-import { addToCart } from "./cart";
+import { addToCart, showCartAmount } from "./cart";
 import { getProducts } from "./requests";
+import { create, show } from "../detailed-product-info-modal-window";
 
 export async function fillProductsList() {
   const filters = getFilters();
@@ -83,6 +84,7 @@ function createCardsForProductsList(hits) {
   for (const hit of hits) {
     const li = document.createElement("li");
     li.className = "products-item";
+    li.setAttribute("data-product-id", hit._id);
 
     let dataProductId = `data-product-id="${hit._id}"`;
     let svgUrl = "/images/svg/icons.svg#icon-shopping-cart";
@@ -151,5 +153,15 @@ function createCardsForProductsList(hits) {
     `;
     btn.removeEventListener("click", toCartClick);
     btn.classList.add("stroke");
+  }
+
+  const productsItem = document.querySelectorAll("li.products-item");
+
+  for (const item of productsItem) {
+    item.addEventListener("click", () => {
+      create(item.getAttribute("data-product-id")).then(() => {
+        show();
+      });
+    });
   }
 }
