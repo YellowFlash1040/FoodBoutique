@@ -1,0 +1,20 @@
+/*
+Light: font-weight: 300;
+Regular: font-weight: 400;
+Medium: font-weight: 500;
+Bold: font-weight: 700;
+*/
+
+@font-face {
+  font-family: "Quincy";
+  src: url("quincycf-extrabold.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Quincy";
+  src: url("quincycf-bold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+}

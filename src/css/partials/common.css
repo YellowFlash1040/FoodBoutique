@@ -1,6 +1,6 @@
 body {
   font-family: "Neue Montreal", sans-serif;
-  background-color: #e8e8e2;
+  background-color: var(--grey);
 }
 
 h1,
@@ -21,7 +21,7 @@ ul {
 
 a {
   text-decoration: none;
-  color: black;
+  color: var(--black);
 }
 
 .list {
@@ -32,10 +32,13 @@ a {
   text-decoration: underline;
 }
 
+button {
+  cursor: pointer;
+}
+
 img,
 picture {
   display: block;
-  max-width: 100%;
 }
 
 .visually-hidden {

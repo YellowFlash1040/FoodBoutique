@@ -1,5 +1,6 @@
 .filters-sect {
-  padding-bottom: 40px;
+  padding-top: 37px;
+  padding-bottom: 20px;
 }
 .filters-title {
   margin-bottom: 8px;
@@ -12,9 +13,10 @@
 .field-label {
   display: block;
   position: relative;
-}
-.field-label:not(:last-child) {
-  margin-bottom: 12px;
+  color: var(--black);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28; /* 128.571% */
 }
 .field {
   appearance: none;
@@ -25,12 +27,8 @@
   border: 1px solid rgba(1, 1, 1, 0.3);
   outline: none;
 }
-.last-field {
-  background-color: white;
-  border: none;
-}
 .field::placeholder {
-  color: #010101;
+  color: var(--black);
 }
 .input-icon {
   pointer-events: none;
@@ -45,4 +43,55 @@
 .stroke-icon {
   stroke: black;
   fill: transparent;
+}
+.categories-list {
+  position: absolute;
+  transform: translateY(100%);
+  bottom: -8px;
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 0px 4px 11.212px 0px rgba(0, 0, 0, 0.04),
+    0px 20px 69px 0px rgba(0, 0, 0, 0.07);
+}
+.categories-item {
+  color: var(--black);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28; /* 128.571% */
+}
+.categories-item:not(:last-child) {
+  margin-bottom: 8px;
+}
+.categories-btn {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+@media screen and (max-width: 767px) {
+  .field-label:not(:last-child) {
+    margin-bottom: 12px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .field-label {
+    display: inline-block;
+    width: 268px;
+    margin-right: 4px;
+    font-size: 18px;
+    line-height: 1.33;
+  }
+  .categories-item {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .filters-sect {
+    padding-bottom: 30px;
+  }
 }
