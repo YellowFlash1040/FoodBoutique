@@ -1,0 +1,98 @@
+.footer-modal-window {
+    background-color: var(--grey);
+
+    padding-top: 100px;
+    width: 335px;
+    max-width: 335px;
+
+    border-radius: 20px;
+
+    position: relative;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media only screen and (min-width: 768px) {
+    .footer-modal-window {
+        width: 490px;
+        max-width: 490px;
+    }
+}
+
+.footer-modal-window .title {
+    max-width: 245px;
+
+    margin-bottom: 14px;
+    
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+@media only screen and (min-width: 768px) {
+    .footer-modal-window .title {
+        margin-bottom: 20px;
+
+        font-size: 24px;
+        line-height: 1;
+    }
+}
+
+.footer-modal-window .title-span {
+    color: var(--green);
+}
+
+.footer-modal-window .message {
+    max-width: 248px;
+
+    margin-bottom: 22px;
+
+    font-size: 14px;
+    line-height: 1.29;
+}
+
+@media only screen and (min-width: 768px) {
+    .footer-modal-window .message {
+        max-width: 328px;
+
+        margin-bottom: 3px;
+
+        font-size: 16px;
+        line-height: 1.25;
+    }
+}
+
+.footer-modal-window .close-icon {
+    position: absolute;
+
+    top: 14px;
+    right: 14px;
+
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+    .footer-modal-window .close-icon {
+        width: 28px;
+        height: 28px;
+
+        top: 24px;
+        right: 24px;
+    }
+}
+
+.footer-modal-window .image {
+    border-radius: 19px;
+    overflow: hidden;
+}
+
+@media only screen and (min-width: 768px) {
+    .footer-modal-window .image {
+        width: 490px;
+        height: 159px;
+    }
+}

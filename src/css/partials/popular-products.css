@@ -1,0 +1,141 @@
+/* ----------- POPULAR PRODUCTS ----------- */
+.popular-products-section-title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.17;
+
+    margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+    .popular-products-section-title {
+        font-size: 28px;
+        line-height: 1.14;
+    }
+}
+
+.popular-products-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 14px;
+
+    max-width: 335px;
+}
+
+@media only screen and (min-width: 768px) {
+    .popular-products-list {
+        gap: 13px;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        max-width: 563px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .popular-products-list {
+        flex-direction: column;
+    }
+}
+
+.popular-products-list-item {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 12px;
+
+    display: flex;
+
+    cursor: pointer;
+
+    position: relative;
+}
+
+@media only screen and (min-width: 768px) {
+    .popular-products-list-item {
+        max-width: 275px;
+    }
+}
+
+.popular-product-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--grey);
+
+    border-radius: 10px;
+
+    min-width: 74px;
+    max-height: 74px;
+    padding: 9px;
+
+    margin-right: 10px;
+}
+
+.popular-product-title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.11;
+
+    margin-bottom: 12px;
+}
+
+@media only screen and (min-width: 768px) {
+    .popular-product-title {
+        font-size: 20px;
+        line-height: 1.2;
+
+        margin-bottom: 10px;
+    }
+}
+
+.popular-product-characteristics-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.popular-product-characteristic {
+    color: var(--black-30);
+    font-size: 12px;
+    line-height: 1.17;
+}
+
+.popular-product-characteristic:first-child {
+    width: 100%;
+}
+
+.popular-product-characteristic-value {
+    color: var(--black);
+}
+
+.popular-product-shopping-cart-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    
+    border-radius: 50%;
+    border: none;
+
+    background-color: var(--grey);
+    fill: var(--green);
+
+    transition: fill var(--transition-options),
+    background-color var(--transition-options);
+
+    cursor: pointer;
+
+    position: absolute;
+    top: 12px;
+    right: 12px;
+}
+
+.popular-product-shopping-cart-button:hover {
+    background-color: var(--green);
+    fill: var(--grey);
+}
+/* ----------- End of Popular products ----------- */

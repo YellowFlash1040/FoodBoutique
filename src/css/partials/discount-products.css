@@ -1,0 +1,135 @@
+.discount-products-section-title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.17;
+
+    margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+    .discount-products-section-title {
+        font-size: 28px;
+        line-height: 1.14;
+    }
+}
+
+.discount-products-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+
+    max-width: 335px;
+}
+
+@media only screen and (min-width: 768px) {
+    .discount-products-list {
+        max-width: 336px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .discount-products-list {
+        max-width: 275px;
+    }
+}
+
+.discount-products-list-item {
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 15px;
+
+    background-color: var(--white);
+    padding: 16px;
+
+    cursor: pointer;
+}
+
+.discount-product-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--grey);
+
+    border-radius: 10px;
+
+    width: 304px;
+    max-width: 304px;
+    height: 150px;
+
+    position: relative;
+
+    margin-bottom: 16px;
+}
+
+@media only screen and (min-width: 1440px) {
+    .discount-product-image-container {
+        max-width: 243px;
+    }
+}
+
+.discount-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--green);
+    fill: var(--white);
+
+    border-radius: 50%;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    transform: translate(15%, -25%);
+}
+
+.discount-product-info-container {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+}
+
+.discount-product-bottom-panel-container {
+    display: flex;
+    column-gap: 8px;
+    align-items: center;
+
+    font-size: 18;
+    font-weight: 500;
+    line-height: 1.11;
+}
+
+@media only screen and (min-width: 768px) {
+    .discount-product-bottom-panel-container {
+        font-size: 20;
+        line-height: 1.2;
+    }
+}
+
+.discount-product-shopping-cart-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 34px;
+    height: 34px;
+    padding: 8px;
+    
+    border-radius: 50%;
+    border: none;
+    
+    background-color: var(--green);
+    fill: var(--grey);
+    
+    transition: background-color var(--transition-options);
+    
+    cursor: pointer;
+}
+
+.discount-product-shopping-cart-button:hover {
+    background-color: var(--dark-green);
+}

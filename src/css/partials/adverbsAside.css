@@ -1,0 +1,9 @@
+.product-adverbs-section {
+    margin-bottom: 80px;
+}
+
+.product-adverbs-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 80px;
+}
