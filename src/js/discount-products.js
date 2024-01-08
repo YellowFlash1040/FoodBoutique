@@ -24,7 +24,7 @@ async function productClick(event)
 
     const id = clickedElement.dataset.id;
     
-    if (name === "button" || name === "svg" || name === "use")
+    if (name === "button" || name === "svg" && event.target.parentElement.nodeName.toLowerCase() === "button" || name === "use" && event.target.parentElement.nodeName.toLowerCase() === "button")
     {
         page.addToCart(id);
         page.showCartAmount();
@@ -32,15 +32,13 @@ async function productClick(event)
     }
     else
     {
-       
-
         await productInfoModalWindow.create(id);
         productInfoModalWindow.show();
     }
 }
 
 const checkedIconPath = "/images/svg/icons.svg#icon-check";
-const cartButtonSelector = "discount-product-shopping-cart-button";
+const cartButtonSelector = "button.discount-product-shopping-cart-button";
 
 function changeButtonIcon(clickedElement)
 {
@@ -75,7 +73,7 @@ async function getDiscountProducts()
     }
     catch (error)
     {
-        console.log(error);
+        console.log(error.message);
     }
 }
 

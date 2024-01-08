@@ -30,7 +30,6 @@ let addToCartButton;
 
 function changeTextOnButton()
 {
-    console.log(addToCartButton.firstChild);
     const insideSpan = addToCartButton.querySelector('span');
     insideSpan.textContent = "Remove from";
 }
