@@ -39,10 +39,10 @@
   width: 24px;
   height: 24px;
 }
-/* .cart-items-list {
-  max-height: 600px;
-  overflow: auto;
-} */
+.cart-items-list {
+  max-height: 480px;
+  overflow-y: auto;
+}
 .cart-products-item {
   position: relative;
   display: flex;
@@ -143,8 +143,6 @@
   .cart-items-panel-container {
     margin-right: 101px;
   }
-}
-.checkout-panel-container {
 }
 
 .checkout-form {
@@ -252,6 +250,5 @@
 @media (min-width: 1440px) {
   .cart-items-list {
     max-height: 600px;
-    overflow: auto;
   }
 }
