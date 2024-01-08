@@ -91,6 +91,8 @@ function addDiscountProductsMarkupToThePage(markup)
     discountProducts.innerHTML = markup;
 }
 
+const shoppingCartIconPath = "/images/svg/icons.svg#icon-shopping-cart";
+
 function createDiscountProductItemMarkup(product)
 {
     const image =
@@ -107,15 +109,15 @@ function createDiscountProductItemMarkup(product)
 
     return `<li class="discount-products-list-item" data-id="${product._id}">
     ${createProductImageCardMarkup(image)}
-    ${createCardBottomPanelMarkup(info)}
+    ${createCardBottomPanelMarkup(info, product._id)}
     </li>`;
 }
 
-function createCardBottomPanelMarkup(info)
+function createCardBottomPanelMarkup(info, id)
 {
     return `<div class="discount-product-bottom-panel-container">
     ${createProductInfoMarkup(info)}
-    ${createAddToCardButton()}
+    ${createAddToCardButton(id)}
     </div>`;
 }
 
@@ -141,13 +143,24 @@ function createProductInfoMarkup({name, price})
     </div>`;
 }
 
-const shoppingCartIconPath = "/images/svg/icons.svg#icon-shopping-cart";
-
-function createAddToCardButton()
+function createAddToCardButton(id)
 {
-    return `<button class="discount-product-shopping-cart-button svg-fill-container" type="button">
+    let iconPath;
+    let iconClass;
+    if (page.getInCart().includes(id))
+    {
+        iconPath = checkedIconPath;
+        iconClass = "svg-stroke-container";
+    }
+    else
+    {
+        iconPath = shoppingCartIconPath;
+        iconClass = "svg-fill-container";
+    }
+
+    return `<button class="discount-product-shopping-cart-button ${iconClass}" type="button">
         <svg class="popular-product-shopping-cart-icon" width="18" height="18">
-        <use href="${shoppingCartIconPath}"></use>
+        <use href="${iconPath}"></use>
         </svg>
     </button>`;
 }
