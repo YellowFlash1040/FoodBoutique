@@ -1,37 +1,51 @@
 <main>
   <section class="cart-sect container">
-    <div class="cart-items-quantity">
-      <span class="circle-btn cart-btn">
-        <svg class="btn-svg cart-btn-svg cart">
-          <use href="/images/svg/icons.svg#icon-shopping-cart"></use>
-        </svg>
-      </span>
-      <h1 class="cart-page-title" id="cart-quantity-title">
-        cart (0)
-      </h1>
+    <div class="cart-items-panel-container">
+      <div class="cart-items-quantity">
+        <span class="circle-btn cart-btn">
+          <svg class="btn-svg cart-btn-svg cart">
+            <use href="/images/svg/icons.svg#icon-shopping-cart"></use>
+          </svg>
+        </span>
+        <h1 class="cart-page-title" id="cart-quantity-title">cart (0)</h1>
+      </div>
+
+      <div class="delete-all">
+        <button type="button" class="delete-all-btn" id="delete-all-btn">
+          Delete all
+
+          <svg class="clos-svg">
+            <use href="/images/svg/icons.svg#icon-close"></use>
+          </svg>
+        </button>
+      </div>
+
+      <ul class="" id="cart-items-list"></ul>
+      <div class="nothing-found-cart-div" id="nothing-found-cart">asdasd</div>
     </div>
 
-    <div class="delete-all">
-      <button type="button" class="delete-all-btn" id="delete-all-btn">
-        Delete all
-
-        <svg class="clos-svg">
-          <use href="/images/svg/icons.svg#icon-close"></use>
-        </svg>
-      </button>
+    <div class="checkout-panel-container">
+      <h2 class="cart-page-title your-order-title">your order</h2>
+      <div class="total-container">
+        <h3 class="total-title">Total</h3>
+        <p class="sum">
+          Sum:
+          <span class="sum-span" id="sum-span"></span>
+        </p>
+      </div>
+      <form class="checkout-form">
+        <div class="mail-field-container">
+          <label class="email-label" for="email">Mail: </label>
+          <input
+            class="mail-field"
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Enter your email"
+          />
+        </div>
+        <button class="checkout-button" type="submit">Checkout</button>
+      </form>
     </div>
-
-    <ul class="" id="cart-items-list"></ul>
-    <div class="nothing-found-cart-div" id="nothing-found-cart"> asdasd</div>
-
-    <h2 class="cart-page-title your-order-title">your order</h2>
-    <div class="total-container">
-      <h3 class="total-title">Total</h3>
-      <p class="sum">
-        Sum:
-        <span class="sum-span" id="sum-span"></span>
-      </p>
-    </div>
-    <input class="cart-mail-inp" type="mail">
   </section>
 </main>
