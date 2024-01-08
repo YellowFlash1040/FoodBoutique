@@ -1,0 +1,76 @@
+.cart-page-modal-window {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    max-width: 335px;
+
+    background-color: var(--grey);
+
+    border-radius: 20px;
+
+    padding: 40px 20px 60px 20px;
+
+    position: relative;
+}
+
+@media only screen and (min-width: 768px) {
+    .cart-page-modal-window {
+        padding: 80px 40px;
+    }
+}
+
+.cart-page-modal-window .image {
+    margin-bottom: 40px;
+}
+
+@media only screen and (min-width: 768px) {
+    .cart-page-modal-window .image {
+        margin-bottom: 37px;
+    }
+}
+
+.cart-page-modal-window .title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.11;
+
+    margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+    .cart-page-modal-window .title {
+        font-size: 32px;
+        line-height: 1;
+    }
+}
+
+.cart-page-modal-window .message {
+    font-size: 14px;
+    line-height: 1.29;
+}
+
+@media only screen and (min-width: 768px) {
+    .cart-page-modal-window .message {
+        font-size: 18px;
+        line-height: 1.33;
+    }
+}
+
+.cart-page-modal-window .close-icon {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+}
+
+@media only screen and (min-width: 768px) {
+    .cart-page-modal-window .close-icon {
+        width: 28px;
+        height: 28px;
+
+        top: 24px;
+        right: 24px;
+    }
+}
