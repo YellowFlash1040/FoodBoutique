@@ -1,4 +1,5 @@
 import axios from "axios";
+import * as page from "./partials/cart.js";
 
 const cartIconPath = "/images/svg/icons.svg#icon-shopping-cart";
 const closeModalWindowIconPath = "/images/svg/icons.svg#icon-close";
@@ -8,7 +9,7 @@ let modalWindow;
 export async function create(productId)
 {
     const product = await getProductById(productId);
-    const markup = createMarkup(product);
+    const markup = createMarkup(product, productId);
     createModalWindow(markup);
 }
 
@@ -17,9 +18,36 @@ function createModalWindow(markup)
     modalWindow = basicLightbox.create(markup);
 }
 
-function createMarkup({ name, category, size, popularity, desc: description, price, img })
+function addToCart(event)
+{
+    const id = event.currentTarget.dataset.id;
+    page.addToCart(id);
+    page.showCartAmount();
+    changeTextOnButton();
+}
+
+let addToCartButton;
+
+function changeTextOnButton()
+{
+    console.log(addToCartButton.firstChild);
+    const insideSpan = addToCartButton.querySelector('span');
+    insideSpan.textContent = "Remove from";
+}
+
+function createMarkup({ name, category, size, popularity, desc: description, price, img }, productId)
 {
     category = category.replace(/_/g, ' ');
+
+    let addToCartButtonText;
+    if (page.getInCart().includes(productId))
+    {
+        addToCartButtonText = "Remove from";
+    }
+    else
+    {
+        addToCartButtonText = "Add to";
+    }
     
     return `
     <div class="detailed-product-info-modal-window">
@@ -42,8 +70,8 @@ function createMarkup({ name, category, size, popularity, desc: description, pri
 
         <div class="cart-price-panel-container">
             <p class="product-price">$${price}</p>
-            <button class="addToCart-button" type="button">
-                <span>Add to</span>
+            <button class="addToCart-button" type="button" data-id="${productId}">
+                <span>${addToCartButtonText}</span>
                 <svg class="cart-icon" width="18" height="18">
                     <use href="${cartIconPath}"></use>
                 </svg>
@@ -71,4 +99,7 @@ export function show()
     const closeModalWindowButton_Selector = ".detailed-product-info-modal-window .close-icon";
     const closeModalWindowButton = document.querySelector(closeModalWindowButton_Selector);
     closeModalWindowButton.addEventListener("click", modalWindow.close);
+
+    addToCartButton = document.querySelector(".detailed-product-info-modal-window .addToCart-button");
+    addToCartButton.addEventListener("click", addToCart);
 }
