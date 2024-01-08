@@ -1,9 +1,17 @@
-.product-adverbs-section {
-    margin-bottom: 80px;
-}
-
 .product-adverbs-list {
     display: flex;
     flex-direction: column;
     row-gap: 80px;
+}
+
+@media only screen and (min-width: 768px) {
+    .product-adverbs-list {
+        row-gap: 64px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .product-adverbs-list {
+        row-gap: 40px;
+    }
 }

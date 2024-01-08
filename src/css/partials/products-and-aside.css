@@ -1,15 +1,24 @@
 .products-and-aside-container {
+    display: flex;
+    flex-direction: column;
 
+    margin-bottom: 80px;
+
+    padding-top: 20px;
 }
 
 @media only screen and (min-width: 768px) {
     .products-and-aside-container {
-
+        margin-bottom: 100px;
     }
 }
 
 @media only screen and (min-width: 1440px) {
     .products-and-aside-container {
-        
+        flex-direction: row;
+
+        margin-bottom: 61px;
+
+        padding-top: 30px;
     }
 }

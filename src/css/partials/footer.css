@@ -37,10 +37,20 @@ footer {
     column-gap: 8px;
     margin-bottom: 20px;
 
-    /* font-size: 18px;
+    color: var(--grey);
+
+    font-family: 'Quincy', sans-serif;
+    font-size: 18px;
     font-weight: 900;
     line-height: 1.11;
-    letter-spacing: -0.02em; */
+    letter-spacing: -0.02em;
+}
+
+@media only screen and (min-width: 768px) {
+    .footer-logo {
+        font-size: 24px;
+        line-height: 1;
+    }
 }
 
 .footer-logo-icon {
@@ -49,10 +59,6 @@ footer {
     background-color: var(--grey);
     border-radius: 50%;
     padding: 6px;
-}
-
-.footer-logo-text-icon {
-    fill: var(--grey);
 }
 
 .social-media-list{
