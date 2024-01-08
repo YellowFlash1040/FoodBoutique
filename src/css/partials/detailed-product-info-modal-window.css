@@ -143,10 +143,10 @@
 .detailed-product-info-modal-window .addToCart-button {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+
+    column-gap: 10px;
 
     background-color: var(--green);
-    width: 116px;
     min-width: 116px;
 
     padding: 12px 24px;
