@@ -17,8 +17,6 @@ deleteAllBtn.addEventListener("click", () => {
 
 function showTotalPrice() {
   const span = document.getElementById("sum-span");
-
-  console.log(span);
   span.innerText = `$${String(totalPrice)}`;
 }
 
@@ -33,11 +31,20 @@ export async function fillItemsList() {
 
   if (items.length === 0) {
     const nothingFound = document.getElementById("nothing-found-cart");
-    nothingFound.style.display = "none";
+    const adasd = document.querySelector(".cart-items-panel-container");
+    const ddd = document.querySelector(".checkout-panel-container");
+    adasd.style.display = "none";
+    ddd.style.display = "none";
+    nothingFound.style.display = "block";
+    cartItemsList.innerHTML = "";
     return;
   } else {
     const nothingFound = document.getElementById("nothing-found-cart");
-    nothingFound.style.display = "block";
+    const adasd = document.querySelector(".cart-items-panel-container");
+    const ddd = document.querySelector(".checkout-panel-container");
+    adasd.style.display = "block";
+    ddd.style.display = "block";
+    nothingFound.style.display = "none";
   }
 
   createCartCards(items);
@@ -72,9 +79,6 @@ function createCartCards(hits) {
           </li>
           <li class="product-properties-item">
             Size: <span class="property-value">${hit.size}</span>
-          </li>
-          <li class="product-properties-item">
-            Popularity: <span class="property-value">${hit.popularity}</span>
           </li>
         </ul>
 
