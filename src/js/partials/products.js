@@ -158,7 +158,10 @@ function createCardsForProductsList(hits) {
   const productsItem = document.querySelectorAll("li.products-item");
 
   for (const item of productsItem) {
-    item.addEventListener("click", () => {
+    item.addEventListener("click", (evt) => {
+      const name = evt.target.nodeName.toLowerCase();
+      if (name === "button" || name === "svg" || name === "use") return;
+
       create(item.getAttribute("data-product-id")).then(() => {
         show();
       });
