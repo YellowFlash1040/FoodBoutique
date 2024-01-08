@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as productInfoModalWindow from "./detailed-product-info-modal-window";
+import * as page from "./partials/cart.js";
 
 const countOfProductsToLoad = 2;
 
@@ -12,16 +13,44 @@ discountProducts.addEventListener("click", productClick);
 async function productClick(event)
 {
     let clickedElement = event.target;
-    
-    while (clickedElement && !clickedElement.classList.contains('discount-products-list-item'))
+
+    const name = clickedElement.nodeName.toLowerCase();
+    if (name === "button" || name === "svg" || name === "use")
+    {
+        const id = clickedElement.dataset.id;
+        page.addToCart(id);
+        page.showCartAmount();
+        changeButtonIcon(clickedElement);
+    }
+    else
+    {
+        while (clickedElement && !clickedElement.classList.contains('discount-products-list-item'))
+        {
+            clickedElement = clickedElement.parentElement;
+        }
+
+        const id = clickedElement.dataset.id;
+
+        await productInfoModalWindow.create(id);
+        productInfoModalWindow.show();
+    }
+}
+
+const checkedIconPath = "/images/svg/icons.svg#icon-check";
+const cartButtonSelector = "discount-product-shopping-cart-button";
+
+function changeButtonIcon(clickedElement)
+{
+    while (clickedElement && !clickedElement.classList.contains(cartButtonSelector))
     {
         clickedElement = clickedElement.parentElement;
     }
 
-    const id = clickedElement.dataset.id;
+    clickedElement.classList.remove('svg-fill-container');
+    clickedElement.classList.add('svg-stroke-container');
 
-    await productInfoModalWindow.create(id);
-    productInfoModalWindow.show();
+    const buttonIcon = clickedElement.firstElementChild.firstElementChild;
+    buttonIcon.setAttribute('href', checkedIconPath);
 }
 
 async function fillDiscountProducts()
@@ -113,7 +142,7 @@ const shoppingCartIconPath = "/images/svg/icons.svg#icon-shopping-cart";
 
 function createAddToCardButton()
 {
-    return `<button class="discount-product-shopping-cart-button" type="button">
+    return `<button class="discount-product-shopping-cart-button svg-fill-container" type="button">
         <svg class="popular-product-shopping-cart-icon" width="18" height="18">
         <use href="${shoppingCartIconPath}"></use>
         </svg>

@@ -122,10 +122,6 @@
     border: none;
 
     background-color: var(--grey);
-    fill: var(--green);
-
-    transition: fill var(--transition-options),
-    background-color var(--transition-options);
 
     cursor: pointer;
 
@@ -136,6 +132,31 @@
 
 .popular-product-shopping-cart-button:hover {
     background-color: var(--green);
+}
+
+/* fill */
+.popular-product-shopping-cart-button.svg-fill-container {
+    fill: var(--green);
+
+    transition: fill var(--transition-options),
+    background-color var(--transition-options);
+}
+
+.popular-product-shopping-cart-button.svg-fill-container:hover {
     fill: var(--grey);
 }
+
+/* stroke */
+.popular-product-shopping-cart-button.svg-stroke-container {
+    stroke: var(--green);
+    fill:none;
+
+    transition: stroke var(--transition-options),
+    background-color var(--transition-options);
+}
+
+.popular-product-shopping-cart-button.svg-stroke-container:hover {
+    stroke: var(--grey);
+}
+
 /* ----------- End of Popular products ----------- */
