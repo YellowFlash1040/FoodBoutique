@@ -21,9 +21,11 @@
     max-width: 335px;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 1439px) {
     .discount-products-list {
         max-width: 336px;
+        flex-direction: row;
+        column-gap: 32px;
     }
 }
 
