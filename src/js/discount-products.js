@@ -23,7 +23,7 @@ async function productClick(event)
     }
 
     const id = clickedElement.dataset.id;
-    
+
     if (name === "button" || name === "svg" && event.target.parentElement.nodeName.toLowerCase() === "button" || name === "use" && event.target.parentElement.nodeName.toLowerCase() === "button")
     {
         page.addToCart(id);
@@ -38,7 +38,7 @@ async function productClick(event)
 }
 
 const checkedIconPath = "/images/svg/icons.svg#icon-check";
-const cartButtonSelector = "button.discount-product-shopping-cart-button";
+const cartButtonSelector = "discount-product-shopping-cart-button";
 
 function changeButtonIcon(clickedElement)
 {

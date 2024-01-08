@@ -35,7 +35,7 @@ async function productClick(event)
 }
 
 const checkedIconPath = "/images/svg/icons.svg#icon-check";
-const cartButtonSelector = "button.popular-product-shopping-cart-button";
+const cartButtonSelector = "popular-product-shopping-cart-button";
 
 function changeButtonIcon(clickedElement)
 {
