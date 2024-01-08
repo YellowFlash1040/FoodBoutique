@@ -6,10 +6,21 @@ const cartItemsList = document.getElementById("cart-items-list");
 
 const deleteAllBtn = document.getElementById("delete-all-btn");
 
+let totalPrice = 0;
+
 deleteAllBtn.addEventListener("click", () => {
   clearCart();
   showCartAmount();
+  fillItemsList();
+  showTotalPrice();
 });
+
+function showTotalPrice() {
+  const span = document.getElementById("sum-span");
+
+  console.log(span);
+  span.innerText = `$${String(totalPrice)}`;
+}
 
 export async function fillItemsList() {
   const inCart = getInCart();
@@ -20,13 +31,25 @@ export async function fillItemsList() {
     items.push(item);
   }
 
+  if (items.length === 0) {
+    const nothingFound = document.getElementById("nothing-found-cart");
+    nothingFound.style.display = "none";
+    return;
+  } else {
+    const nothingFound = document.getElementById("nothing-found-cart");
+    nothingFound.style.display = "block";
+  }
+
   createCartCards(items);
 }
 
 function createCartCards(hits) {
   const items = [];
 
+  totalPrice = 0;
   for (const hit of hits) {
+    totalPrice += hit.price;
+
     const li = document.createElement("li");
     li.className = "cart-products-item";
 
@@ -57,7 +80,7 @@ function createCartCards(hits) {
 
         <span class="price">$${hit.price}</span>
       </div>
-      <button class="delete-from-cart-btn" data-product-id="${dataProductId}">
+      <button class="delete-from-cart-btn" ${dataProductId}>
         <svg class="delete-from-cart-svg">
           <use href="/images/svg/icons.svg#icon-close"></use>
         </svg>
@@ -73,20 +96,17 @@ function createCartCards(hits) {
   const btns = document.querySelectorAll("button[data-product-id]");
 
   for (const btn of btns) {
-    btn.addEventListener("click", toCartClick);
+    btn.addEventListener("click", removeFromCart);
   }
 
-  function toCartClick(evt) {
+  function removeFromCart(evt) {
     const btn = evt.currentTarget;
     const id = btn.getAttribute("data-product-id");
     deleteFromCart(id);
     showCartAmount();
-    btn.innerHTML = `
-      <svg class="btn-svg product">
-        <use href="/images/svg/icons.svg#icon-check"></use>
-      </svg>
-    `;
-    btn.removeEventListener("click", toCartClick);
-    btn.classList.add("stroke");
+    fillItemsList();
+    showTotalPrice();
   }
+
+  showTotalPrice();
 }
