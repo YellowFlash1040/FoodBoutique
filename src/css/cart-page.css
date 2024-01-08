@@ -107,11 +107,139 @@
   font-weight: 500;
   line-height: 28px; /* 116.667% */
 }
-.cart-mail-inp {
-}
 
 @media screen and (min-width: 768px) {
   .cart-page-title {
     font-size: 32px;
+  }
+  .total-container {
+    max-width: 590px;
+  }
+}
+
+.cart-sect {
+  display: flex;
+}
+
+@media only screen and (min-width: 1440px) {
+  .cart-sect {
+    justify-content: space-between;
+  }
+}
+
+@media only screen and (max-width: 1439px) {
+  .cart-sect {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .cart-items-panel-container {
+    margin-right: 101px;
+  }
+}
+.checkout-panel-container {
+  
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 14px;
+}
+
+@media only screen and (min-width: 768px) {
+  .checkout-form {
+    flex-direction: row;
+    column-gap: 16px;
+
+    max-width: 590px;
+  }
+}
+
+.checkout-form .mail-field-container {
+  position: relative;
+
+  border-radius: 30px;
+  background-color: transparent;
+
+  font-size: 14px;
+  line-height: 1.29;
+}
+
+@media only screen and (min-width: 768px) {
+  .checkout-form .mail-field-container {
+    max-width: 359px;
+    width: 359px;
+
+    font-size: 18px;
+    line-height: 1.33;
+  }
+}
+
+.checkout-form .email-label {
+  position: absolute;
+  top: 12px;
+  left: 20px;
+
+  color: var(--black-50);
+}
+
+@media only screen and (min-width: 768px) {
+  .checkout-form .email-label {
+    top: 15px;
+  }
+}
+
+.checkout-form .mail-field {
+  padding: 12px 20px 12px 56px;
+
+  background-color: inherit;
+
+  width: 100%;
+  border-radius: inherit;
+
+  border: 1px solid var(--black-30);
+
+  color: var(--black);
+
+  font-size: inherit;
+  line-height: inherit;
+}
+
+@media only screen and (min-width: 768px) {
+  .checkout-form .mail-field {
+    padding: 15px 20px 15px 63px;
+  }
+}
+
+.checkout-form .mail-field::placeholder {
+  color: var(--black);
+}
+
+.checkout-form .checkout-button {
+  background-color: var(--green);
+
+  border-radius: 30px;
+  border: none;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.29;
+
+  padding: 12px 0;
+
+  color: var(--grey);
+}
+
+@media only screen and (min-width: 768px) {
+  .checkout-form .checkout-button {
+    max-width: 215px;
+    width: 215px;
+
+    font-size: 20px;
+    line-height: 1.2;
+
+    padding: 15px 0;
   }
 }
