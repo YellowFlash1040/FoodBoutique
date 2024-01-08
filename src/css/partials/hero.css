@@ -1,6 +1,6 @@
 .hero-sect {
-  padding-top: 72px;
-  padding-bottom: 74px;
+  padding-top: 54px;
+  padding-bottom: 37px;
 }
 .hero-title {
   margin-bottom: 16px;
@@ -8,12 +8,12 @@
   font-weight: 500;
   font-family: "Neue Montreal";
   text-align: center;
-  color: #010101;
+  color: var(--black);
   line-height: 1.1;
   letter-spacing: -0.88px;
 }
 .accent {
-  color: #6d8434;
+  color: var(--green);
 }
 .hero-desc {
   max-width: 292px;
@@ -42,4 +42,30 @@
   width: 100px;
   height: 100px;
   border-radius: 50%;
+}
+
+@media screen and (min-width: 768px) {
+  .hero-sect {
+    padding-top: 92px;
+  }
+  .hero-title {
+    font-size: 80px;
+    margin-bottom: 20px;
+  }
+  .hero-desc {
+    font-size: 18px;
+    max-width: 492px;
+    margin-bottom: 40px;
+  }
+  .organic-img {
+    top: -30px;
+    right: 10px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .organic-img {
+    top: -50px;
+    right: 20px;
+  }
 }

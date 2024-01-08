@@ -1,5 +1,6 @@
 .page-header {
-  margin-top: 18px;
+  padding-top: 18px;
+  padding-bottom: 18px;
   display: flex;
   justify-content: space-between;
 }
@@ -9,20 +10,20 @@
   gap: 8px;
   text-decoration: none;
   color: black;
-  fill: #e8e8e2;
+  fill: var(--grey);
   border-radius: 9px;
-}
-.logo-text {
-  fill: black;
-  width: 116px;
-  height: 16px;
+  font-family: "Quincy", serif;
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: -0.02em;
+  font-weight: 900;
 }
 .logo-icon {
   width: 28px;
   height: 28px;
   padding: 6px;
   border-radius: 50%;
-  background-color: #6d8434;
+  background-color: var(--green);
 }
 .nav {
   display: flex;
@@ -31,28 +32,77 @@
 }
 .home-link {
   padding: 10px 20px;
-  background-color: #6d8434;
+  background-color: var(--green);
   border-radius: 30px;
-  color: #e8e8e2;
+  color: var(--grey);
   text-decoration: none;
-  transition: background-color 200ms linear;
+  transition: background-color var(--transition-options);
 }
 .home-link:hover,
 .home-link:focus,
-.cart-link:hover,
-.cart-link:focus {
-  background-color: #586f1f;
-}
-.cart-link {
-  display: inline-block;
-  width: 38px;
-  height: 38px;
-  padding: 12px;
-  border-radius: 50%;
-  background-color: #6d8434;
-  transition: background-color 200ms linear;
+.cart-btn:hover,
+.cart-btn:focus,
+.cart-logo:hover .cart-btn,
+.cart-logo:focus .cart-btn {
+  background-color: var(--dark-green);
 }
 .cart-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.cart-btn {
+  width: 38px;
+  height: 38px;
+  background-color: var(--green);
+  transition: background-color var(--transition-options);
+  fill: var(--grey);
+}
+.cart-btn-svg {
+  padding: 12px;
+}
+.cart-logo-span {
+  display: none;
+  color: var(--black);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.33; /* 133.333% */
+  text-transform: uppercase;
+}
+
+.circle-btn {
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+}
+.btn-svg {
+  display: block;
   width: 100%;
   height: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .page-header {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+  .nav {
+    gap: 16px;
+  }
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+  }
+  .logo {
+    font-size: 24px;
+  }
+  .cart-logo-span {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .nav {
+    gap: 24px;
+  }
 }

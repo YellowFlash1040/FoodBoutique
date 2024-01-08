@@ -6,7 +6,8 @@
       <input
         class="field"
         type="text"
-        name="searchQuery"
+        name="keyword"
+        id="keyword-input"
         placeholder="Search for anything"
       />
       <svg class="input-icon">
@@ -14,25 +15,10 @@
       </svg>
     </label>
     <label class="field-label">
-      <select class="field" name="category">
-        <option value="apple">Apple</option>
-        <option value="banana">Banana</option>
-        <option value="orange">Orange</option>
-        <option value="grape">Grape</option>
+      <select class="field select" name="category" id="category-select">
+        <option value="">Categories</option>
       </select>
-      <!-- <span>Categories</span> -->
-      <svg class="input-icon stroke-icon">
-        <use href="/images/svg/icons.svg#icon-chevron-down"></use>
-      </svg>
-    </label>
-    <label class="field-label">
-      <select class="field last-field" name="priceAndPopularity">
-        <option value="apple">Apple</option>
-        <option value="banana">Banana</option>
-        <option value="orange">Orange</option>
-        <option value="grape">Grape</option>
-      </select>
-      <!-- <span>A to Z</span> -->
+      <ul class="categories-list display-none" id="categories"></ul>
       <svg class="input-icon stroke-icon">
         <use href="/images/svg/icons.svg#icon-chevron-down"></use>
       </svg>
