@@ -9,7 +9,8 @@ export function setInCart(inCart = []) {
 }
 
 export function addToCart(id) {
-  setInCart([...getInCart(), id]);
+  const inCart = getInCart();
+  if (!inCart.includes(id)) setInCart([...inCart, id]);
 }
 
 export function clearCart() {
