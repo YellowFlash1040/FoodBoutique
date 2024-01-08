@@ -1,6 +1,3 @@
-// Cart quantity
-const quantitySpan = document.getElementById("cart-quantity");
-
 if (!getInCart()) setInCart();
 
 export function getInCart() {
@@ -19,6 +16,15 @@ export function clearCart() {
   setInCart([]);
 }
 
+export function deleteFromCart(id) {
+  const inCart = getInCart();
+  setInCart(inCart.filter(itemId => itemId !== id));
+}
+
 export function showCartAmount() {
-  quantitySpan.innerText = `cart (${getInCart().length})`;
+  const quantitySpan = document.getElementById("cart-quantity");
+  if (quantitySpan) quantitySpan.innerText = `cart (${getInCart().length})`;
+
+  const quantityTitle = document.getElementById("cart-quantity-title");
+  if (quantityTitle) quantityTitle.innerText = `cart (${getInCart().length})`;
 }

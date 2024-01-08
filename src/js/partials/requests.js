@@ -12,3 +12,8 @@ export async function getCategories() {
   const res = await axios.get("products/categories");
   return res.data;
 }
+
+export async function getItem(id) {
+  const res = await axios.get(`products/${id}`);
+  return res.data;
+}
