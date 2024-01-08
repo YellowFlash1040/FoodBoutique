@@ -103,7 +103,7 @@ function createProductItemMarkup(product)
     return `<li class="popular-products-list-item" data-id="${product._id}">
     ${createProductImageMarkup(image)}
     ${createProductInfoMarkup(info)}
-    ${createAddToCardButton()}
+    ${createAddToCardButton(product._id)}
     </li>`;
 }
 
@@ -139,11 +139,24 @@ function createProductInfoMarkup({ name, category, size, popularity })
 
 const shoppingCartIconPath = "/images/svg/icons.svg#icon-shopping-cart";
 
-function createAddToCardButton()
+function createAddToCardButton(id)
 {
-    return `<button class="popular-product-shopping-cart-button svg-fill-container" type="button">
+    let iconPath;
+    let iconClass;
+    if (page.getInCart().includes(id))
+    {
+        iconPath = checkedIconPath;
+        iconClass = "svg-stroke-container";
+    }
+    else
+    {
+        iconPath = shoppingCartIconPath;
+        iconClass = "svg-fill-container";
+    }
+
+    return `<button class="popular-product-shopping-cart-button ${iconClass}" type="button">
         <svg class="popular-product-shopping-cart-icon" width="12" height="12">
-        <use href="${shoppingCartIconPath}"></use>
+        <use href="${iconPath}"></use>
         </svg>
     </button>`;
 }
