@@ -125,7 +125,6 @@
     border: none;
     
     background-color: var(--green);
-    fill: var(--grey);
     
     transition: background-color var(--transition-options);
     
@@ -134,4 +133,15 @@
 
 .discount-product-shopping-cart-button:hover {
     background-color: var(--dark-green);
+}
+
+/* fill */
+.discount-product-shopping-cart-button.svg-fill-container {
+    fill: var(--grey);
+}
+
+/* stroke */
+.discount-product-shopping-cart-button.svg-stroke-container {
+    stroke: var(--grey);
+    fill: none;
 }

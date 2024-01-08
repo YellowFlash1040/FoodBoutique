@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as productInfoModalWindow from "./detailed-product-info-modal-window.js";
+import * as page from "./partials/cart.js";
 
 const popularProducts = document.querySelector("ul.popular-products-list");
 
@@ -10,15 +11,43 @@ async function productClick(event)
 {
     let clickedElement = event.target;
     
-    while (clickedElement && !clickedElement.classList.contains('popular-products-list-item'))
+    const name = clickedElement.nodeName.toLowerCase();
+    if (name === "button" || name === "svg" || name === "use")
+    {
+        const id = clickedElement.dataset.id;
+        page.addToCart(id);
+        page.showCartAmount();
+        changeButtonIcon(clickedElement);
+    }
+    else
+    {
+        while (clickedElement && !clickedElement.classList.contains('popular-products-list-item'))
+        {
+            clickedElement = clickedElement.parentElement;
+        }
+
+        const id = clickedElement.dataset.id;
+
+        await productInfoModalWindow.create(id);
+        productInfoModalWindow.show();
+    }
+}
+
+const checkedIconPath = "/images/svg/icons.svg#icon-check";
+const cartButtonSelector = "popular-product-shopping-cart-button";
+
+function changeButtonIcon(clickedElement)
+{
+    while (clickedElement && !clickedElement.classList.contains(cartButtonSelector))
     {
         clickedElement = clickedElement.parentElement;
     }
 
-    const id = clickedElement.dataset.id;
+    clickedElement.classList.remove('svg-fill-container');
+    clickedElement.classList.add('svg-stroke-container');
 
-    await productInfoModalWindow.create(id);
-    productInfoModalWindow.show();
+    const buttonIcon = clickedElement.firstElementChild.firstElementChild;
+    buttonIcon.setAttribute('href', checkedIconPath);
 }
 
 async function fillPopularProducts()
@@ -111,7 +140,7 @@ const shoppingCartIconPath = "/images/svg/icons.svg#icon-shopping-cart";
 
 function createAddToCardButton()
 {
-    return `<button class="popular-product-shopping-cart-button" type="button">
+    return `<button class="popular-product-shopping-cart-button svg-fill-container" type="button">
         <svg class="popular-product-shopping-cart-icon" width="12" height="12">
         <use href="${shoppingCartIconPath}"></use>
         </svg>
