@@ -1,0 +1,15 @@
+.products-and-aside-container {
+
+}
+
+@media only screen and (min-width: 768px) {
+    .products-and-aside-container {
+
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .products-and-aside-container {
+        
+    }
+}

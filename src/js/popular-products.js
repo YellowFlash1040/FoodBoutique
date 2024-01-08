@@ -1,8 +1,25 @@
 import axios from "axios";
+import * as productInfoModalWindow from "./detailed-product-info-modal-window.js";
 
 const popularProducts = document.querySelector("ul.popular-products-list");
 
 fillPopularProducts();
+popularProducts.addEventListener("click", productClick);
+
+async function productClick(event)
+{
+    let clickedElement = event.target;
+    
+    while (clickedElement && !clickedElement.classList.contains('popular-products-list-item'))
+    {
+        clickedElement = clickedElement.parentElement;
+    }
+
+    const id = clickedElement.dataset.id;
+
+    await productInfoModalWindow.create(id);
+    productInfoModalWindow.show();
+}
 
 async function fillPopularProducts()
 {
@@ -53,7 +70,7 @@ function createProductItemMarkup(product)
         popularity: product.popularity
     };
 
-    return `<li class="popular-products-list-item">
+    return `<li class="popular-products-list-item" data-id="${product._id}">
     ${createProductImageMarkup(image)}
     ${createProductInfoMarkup(info)}
     ${createAddToCardButton()}
@@ -62,13 +79,15 @@ function createProductItemMarkup(product)
 
 function createProductImageMarkup({src, alt})
 {
-    return `<div class="popular-product-image-container" type="button">
+    return `<div class="popular-product-image-container">
     <img src="${src}" alt="${alt}" width="56" height="56" />
     </div>`;
 }
 
 function createProductInfoMarkup({ name, category, size, popularity })
 {
+    category = category.replace(/_/g, ' ');
+
     return `<div class="popular-product-info-container">
     <p class="popular-product-title">${name}</p>
     <ul class="popular-product-characteristics-list">
