@@ -12,22 +12,23 @@ async function productClick(event)
     let clickedElement = event.target;
     
     const name = clickedElement.nodeName.toLowerCase();
+    const addToCartButton = clickedElement;
+
+    while (clickedElement && !clickedElement.classList.contains('popular-products-list-item'))
+    {
+        clickedElement = clickedElement.parentElement;
+    }
+
+    const id = clickedElement.dataset.id;
+
     if (name === "button" || name === "svg" || name === "use")
     {
-        const id = clickedElement.dataset.id;
         page.addToCart(id);
         page.showCartAmount();
-        changeButtonIcon(clickedElement);
+        changeButtonIcon(addToCartButton);
     }
     else
     {
-        while (clickedElement && !clickedElement.classList.contains('popular-products-list-item'))
-        {
-            clickedElement = clickedElement.parentElement;
-        }
-
-        const id = clickedElement.dataset.id;
-
         await productInfoModalWindow.create(id);
         productInfoModalWindow.show();
     }
