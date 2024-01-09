@@ -150,7 +150,7 @@ function createCardsForProductsList(hits) {
     showCartAmount();
     btn.innerHTML = `
       <svg class="btn-svg product">
-        <use href="/images/svg/icons.svg#icon-check"></use>
+        <use href="${icons}#icon-check"></use>
       </svg>
     `;
     btn.removeEventListener("click", toCartClick);

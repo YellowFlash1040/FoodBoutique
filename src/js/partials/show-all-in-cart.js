@@ -2,6 +2,8 @@ import { showCartAmount, clearCart, deleteFromCart } from "./cart";
 import { getInCart } from "./cart";
 import { getItem } from "./requests";
 
+import icons from "/images/svg/icons.svg";
+
 const cartItemsList = document.getElementById("cart-items-list");
 
 const deleteAllBtn = document.getElementById("delete-all-btn");
@@ -83,7 +85,7 @@ function createCartCards(hits) {
       </div>
       <button class="delete-from-cart-btn" ${dataProductId}>
         <svg class="delete-from-cart-svg">
-          <use href="/images/svg/icons.svg#icon-close"></use>
+          <use href="${icons + "#icon-close"}"></use>
         </svg>
       </button>
     `;
