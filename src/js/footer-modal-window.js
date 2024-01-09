@@ -1,10 +1,10 @@
 import icons from "/images/svg/icons.svg";
-import images from "/images";
 
-const mobileImagePath = `${images}/png/vegetables-basket-phone.png`;
-const mobileImagePath_2x = `${images}/png/vegetables-basket-phone@2x.png`;
-const tabletImagePath = `${images}/png/vegetables-basket-tablet.png`;
-const tabletImagePath_2x = `${images}/png/vegetables-basket-tablet@2x.png`;
+import mobileImagePath from `/images/png/vegetables-basket-phone.png`;
+import mobileImagePath_2x from `/images/png/vegetables-basket-phone@2x.png`;
+import tabletImagePath from `/images/png/vegetables-basket-tablet.png`;
+import tabletImagePath_2x from `/images/png/vegetables-basket-tablet@2x.png`;
+
 const imageAlt = "Vegetables-basket";
 const closeModalWindowIconPath = `${icons}#icon-close`;
 
