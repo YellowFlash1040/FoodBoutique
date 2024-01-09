@@ -29,21 +29,22 @@ export async function fillItemsList() {
     items.push(item);
   }
 
+  const nothingFound = document.getElementById("nothing-found-cart");
+  const deleteAll = document.querySelector(".delete-all");
+  const checkoutPanel = document.querySelector(".checkout-panel-container");
+  const cartSect = document.querySelector(".cart-sect");
   if (items.length === 0) {
-    const nothingFound = document.getElementById("nothing-found-cart");
-    const adasd = document.querySelector(".cart-items-panel-container");
-    const ddd = document.querySelector(".checkout-panel-container");
-    adasd.style.display = "none";
-    ddd.style.display = "none";
+    cartSect.style.display = "block";
+    deleteAll.style.display = "none";
+    cartItemsList.style.display = "none";
+    checkoutPanel.style.display = "none";
     nothingFound.style.display = "block";
-    cartItemsList.innerHTML = "";
     return;
   } else {
-    const nothingFound = document.getElementById("nothing-found-cart");
-    const adasd = document.querySelector(".cart-items-panel-container");
-    const ddd = document.querySelector(".checkout-panel-container");
-    adasd.style.display = "block";
-    ddd.style.display = "block";
+    cartSect.style.display = "flex";
+    deleteAll.style.display = "flex";
+    cartItemsList.style.display = "block";
+    checkoutPanel.style.display = "block";
     nothingFound.style.display = "none";
   }
 
