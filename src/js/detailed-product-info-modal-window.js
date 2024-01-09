@@ -16,7 +16,11 @@ export async function create(productId)
 
 function createModalWindow(markup)
 {
-    modalWindow = basicLightbox.create(markup);
+    const options =
+    {
+        onClose: enablePageScroll
+    };
+    modalWindow = basicLightbox.create(markup, options);
     document.addEventListener("keydown", closeLightBox);
 }
 
@@ -106,10 +110,19 @@ export function show()
 {
     modalWindow.show();
 
+    const scrollLockMethod = 'disableBodyScroll';
+    bodyScrollLock[scrollLockMethod](document.body);
+
     const closeModalWindowButton_Selector = ".detailed-product-info-modal-window .close-icon";
     const closeModalWindowButton = document.querySelector(closeModalWindowButton_Selector);
     closeModalWindowButton.addEventListener("click", modalWindow.close);
 
     addToCartButton = document.querySelector(".detailed-product-info-modal-window .addToCart-button");
     addToCartButton.addEventListener("click", addToCart);
+}
+
+function enablePageScroll()
+{
+    const scrollLockMethod = 'enableBodyScroll';
+    bodyScrollLock[scrollLockMethod](document.body);
 }

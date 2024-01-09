@@ -33,12 +33,25 @@ async function form_Submit(event)
         closeModalWindowButton_Selector = ".footer-error-modal-window .close-icon";
     }
 
-    modalWindow = basicLightbox.create(markup);
+    const options =
+    {
+        onClose: enablePageScroll
+    };
+
+    modalWindow = basicLightbox.create(markup, options);
+    const scrollLockMethod = 'disableBodyScroll';
+    bodyScrollLock[scrollLockMethod](document.body);
     modalWindow.show();
 
     const closeModalWindowButton = document.querySelector(closeModalWindowButton_Selector);
     closeModalWindowButton.addEventListener("click", modalWindow.close);
     document.addEventListener("keydown", closeLightBox);
+}
+
+function enablePageScroll()
+{
+    const scrollLockMethod = 'enableBodyScroll';
+    bodyScrollLock[scrollLockMethod](document.body);
 }
 
 function closeLightBox(event)
