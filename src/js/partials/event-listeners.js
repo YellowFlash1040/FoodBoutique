@@ -5,6 +5,7 @@ const categoriesList = document.getElementById("categories");
 import { getAndShowProducts } from "./products";
 import { getFilters, setFilters } from "./filters";
 import { setParamsBasedOnScreenSize } from "./pages";
+import { setFirstPage } from "./pages";
 
 // submit
 form.addEventListener("submit", handleForm);
@@ -13,6 +14,7 @@ form.addEventListener("input", handleForm);
 
 async function handleForm(evt) {
   evt.preventDefault();
+  setFirstPage(1);
   getAndShowProducts();
 }
 

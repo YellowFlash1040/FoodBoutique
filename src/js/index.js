@@ -5,8 +5,7 @@ import { showCartAmount } from "./partials/cart";
 
 showCartAmount();
 
-await fillCategories();
-
-setParamsBasedOnScreenSize();
-
-await fillProductsList();
+fillCategories().then(() => {
+  setParamsBasedOnScreenSize();
+  fillProductsList();
+});

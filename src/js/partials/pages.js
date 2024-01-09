@@ -11,6 +11,10 @@ let totalPages = null;
 let pagesMax = null;
 let firstPage = 1;
 
+export function setFirstPage(page) {
+  firstPage = page;
+}
+
 export function getTotalPages() {
   return totalPages;
 }
