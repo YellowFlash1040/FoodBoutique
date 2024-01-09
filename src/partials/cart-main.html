@@ -28,9 +28,7 @@
       <div class="total-container">
         <h3 class="total-title">Total</h3>
         <p>
-          <span class="sum">
-            Sum:
-          </span>
+          <span class="sum"> Sum: </span>
           <span class="sum-span" id="sum-span"></span>
         </p>
       </div>
@@ -43,6 +41,9 @@
             name="email"
             type="email"
             placeholder="Enter your email"
+            pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"
+            required
+            autocomplete="email"
           />
         </div>
         <button class="checkout-button" type="submit">Checkout</button>
