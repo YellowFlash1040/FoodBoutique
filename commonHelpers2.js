@@ -1,14 +1,14 @@
-import{b as tt,g as L,e as $,s as f,f as et,i as w}from"./assets/footer-4ab1013f.js";import{a as C}from"./assets/vendor-bb737cb9.js";const S=document.getElementById("categories");async function st(){const t=await tt();nt(t)}function nt(t){const e=[];for(const s of t){const a=document.createElement("li");a.className="categories-item",a.value=s;const o=document.createElement("button");o.type="button",o.className="categories-btn",o.setAttribute("data-value",s),o.innerText=s.replaceAll("_"," "),a.appendChild(o),e.push(a)}S.append(...e),S.innerHTML+=`
+import{b as et,g as w,e as P,s as h,f as nt,i as p}from"./assets/footer-cb0d26ed.js";import{a as E}from"./assets/vendor-bb737cb9.js";const S=document.getElementById("categories");async function st(){const t=await et();ot(t)}function ot(t){const e=[];for(const n of t){const c=document.createElement("li");c.className="categories-item",c.value=n;const o=document.createElement("button");o.type="button",o.className="categories-btn",o.setAttribute("data-value",n),o.innerText=n.replaceAll("_"," "),c.appendChild(o),e.push(c)}S.append(...e),S.innerHTML+=`
     <li class="categories-item">
       <button class="categories-btn" data-value="">
         Show all
       </button>
     </li>
-  `}const ot=document.getElementById("keyword-input"),A=u();A?ot.value=A.keyword:l({keyword:null,category:null,page:1,limit:6});function l(t){localStorage.setItem("filters",JSON.stringify(t))}function u(){return JSON.parse(localStorage.getItem("filters"))}const h=document.getElementById("to-the-start"),v=document.getElementById("previous"),N=document.getElementById("pages-list"),b=document.getElementById("next"),y=document.getElementById("to-the-end");let _=null,m=null,r=1;function at(t){r=t}function g(){return _}function ct(t){_=t}function it(t){const e=[],s=Math.min(g(),m),a=s+r-1,o=t.page-a;o>0&&(r+=o);for(let n=r;n<s+r;n++){let d=function(){l({...t,page:n}),p()};const c=document.createElement("li");c.className="pages-item";const i=document.createElement("button");i.type="button",i.className="circle-btn number-btn "+(t.page===n?"current":""),i.innerHTML=n,i.addEventListener("click",d),c.appendChild(i),e.push(c)}N.innerHTML="",N.append(...e)}function q(){h.classList.add("disabled"),v.classList.add("disabled"),v.removeEventListener("click",H),h.removeEventListener("click",D)}function rt(){h.classList.remove("disabled"),v.classList.remove("disabled"),v.addEventListener("click",H),h.addEventListener("click",D)}function z(){y.classList.add("disabled"),b.classList.add("disabled"),b.removeEventListener("click",W),y.removeEventListener("click",O)}function lt(){y.classList.remove("disabled"),b.classList.remove("disabled"),b.addEventListener("click",W),y.addEventListener("click",O)}function H(){const t=u();t.page--,l(t),r-1===t.page&&r--,t.page===1&&q(),p()}function W(){const t=u();t.page++,l(t);const e=Math.min(g(),m);r+e===t.page&&r++,t.page===g()&&z(),p()}function D(){const t=u();t.page=1,l(t),r=1,p()}function O(){const t=u();t.page=g(),l(t);const e=Math.min(g(),m);r=t.page-e+1,p()}function R(){let t=window.innerWidth;t>=1440?(l({...u(),limit:9}),m=5):t>=768?(l({...u(),limit:8}),m=5):(l({...u(),limit:6}),m=3),p()}const ut="/images/svg/icons.svg#icon-shopping-cart",dt="/images/svg/icons.svg#icon-close";let P;async function E(t){const e=await ht(t),s=ft(e,t);pt(s)}function pt(t){P=basicLightbox.create(t)}function gt(t){const e=t.currentTarget.dataset.id;$(e),f(),mt()}let k;function mt(){const t=k.querySelector("span");t.textContent="Remove from"}function ft({name:t,category:e,size:s,popularity:a,desc:o,price:n,img:c},i){e=e.replace(/_/g," ");let d;return L().includes(i)?d="Remove from":d="Add to",`
+  `}const ct=document.getElementById("keyword-input"),A=u();A?ct.value=A.keyword:l({keyword:null,category:null,page:1,limit:6});function l(t){localStorage.setItem("filters",JSON.stringify(t))}function u(){return JSON.parse(localStorage.getItem("filters"))}const v=document.getElementById("to-the-start"),y=document.getElementById("previous"),N=document.getElementById("pages-list"),b=document.getElementById("next"),L=document.getElementById("to-the-end");let _=null,f=null,r=1;function at(t){r=t}function m(){return _}function it(t){_=t}function rt(t){const e=[],n=Math.min(m(),f),c=n+r-1,o=t.page-c;o>0&&(r+=o);for(let s=r;s<n+r;s++){let d=function(){l({...t,page:s}),g()};const a=document.createElement("li");a.className="pages-item";const i=document.createElement("button");i.type="button",i.className="circle-btn number-btn "+(t.page===s?"current":""),i.innerHTML=s,i.addEventListener("click",d),a.appendChild(i),e.push(a)}N.innerHTML="",N.append(...e)}function q(){v.classList.add("disabled"),y.classList.add("disabled"),y.removeEventListener("click",H),v.removeEventListener("click",D)}function lt(){v.classList.remove("disabled"),y.classList.remove("disabled"),y.addEventListener("click",H),v.addEventListener("click",D)}function z(){L.classList.add("disabled"),b.classList.add("disabled"),b.removeEventListener("click",W),L.removeEventListener("click",O)}function ut(){L.classList.remove("disabled"),b.classList.remove("disabled"),b.addEventListener("click",W),L.addEventListener("click",O)}function H(){const t=u();t.page--,l(t),r-1===t.page&&r--,t.page===1&&q(),g()}function W(){const t=u();t.page++,l(t);const e=Math.min(m(),f);r+e===t.page&&r++,t.page===m()&&z(),g()}function D(){const t=u();t.page=1,l(t),r=1,g()}function O(){const t=u();t.page=m(),l(t);const e=Math.min(m(),f);r=t.page-e+1,g()}function R(){let t=window.innerWidth;t>=1440?(l({...u(),limit:9}),f=5):t>=768?(l({...u(),limit:8}),f=5):(l({...u(),limit:6}),f=3),g()}const dt="/images/svg/icons.svg#icon-shopping-cart",pt="/images/svg/icons.svg#icon-close";let $;async function C(t){const e=await vt(t),n=ht(e,t);gt(n)}function gt(t){$=basicLightbox.create(t),document.addEventListener("keydown",j)}function j(t){t.key==="Escape"&&($.close(),document.removeEventListener("keydown",j))}function mt(t){const e=t.currentTarget.dataset.id;P(e),h(),ft()}let k;function ft(){const t=k.querySelector("span");t.textContent="Remove from"}function ht({name:t,category:e,size:n,popularity:c,desc:o,price:s,img:a},i){e=e.replace(/_/g," ");let d;return w().includes(i)?d="Remove from":d="Add to",`
     <div class="detailed-product-info-modal-window">
 
         <div class="image-container">
-            <img class="image" src="${c}" alt="${t}" width="160" height="160"/>
+            <img class="image" src="${a}" alt="${t}" width="160" height="160"/>
         </div>
 
         <div class="product-info-container">
@@ -16,48 +16,48 @@ import{b as tt,g as L,e as $,s as f,f as et,i as w}from"./assets/footer-4ab1013f
 
         <ul class="product-characteristics-list">
             <li class="product-characteristic"><span class="span">Category:</span> ${e}</li>
-            <li class="product-characteristic"><span class="span">Size:</span> ${s}</li>
-            <li class="product-characteristic"><span class="span">Popularity:</span> ${a}</li>
+            <li class="product-characteristic"><span class="span">Size:</span> ${n}</li>
+            <li class="product-characteristic"><span class="span">Popularity:</span> ${c}</li>
         </ul>
 
         <p class="product-description">${o}</p>
         </div>
 
         <div class="cart-price-panel-container">
-            <p class="product-price">$${n}</p>
+            <p class="product-price">$${s}</p>
             <button class="addToCart-button" type="button" data-id="${i}">
                 <span>${d}</span>
                 <svg class="cart-icon" width="18" height="18">
-                    <use href="${ut}"></use>
+                    <use href="${dt}"></use>
                 </svg>
             </button>
         </div>
 
         <svg class="close-icon" width="22" height="22">
-            <use href="${dt}"></use>
+            <use href="${pt}"></use>
         </svg>
     </div>
-    `}async function ht(t){const e=`https://food-boutique.b.goit.study/api/products/${t}`;return(await C.get(e)).data}function I(){P.show();const t=".detailed-product-info-modal-window .close-icon";document.querySelector(t).addEventListener("click",P.close),k=document.querySelector(".detailed-product-info-modal-window .addToCart-button"),k.addEventListener("click",gt)}const vt=document.getElementById("keyword-input"),B=document.getElementById("products"),x=document.getElementById("pages-panel"),j=document.getElementById("previous"),J=document.getElementById("next"),U=document.getElementById("nothing-found");async function p(){const t=u(),e=await bt(t);e.length>0?(yt(),$t(e)):Lt(),t.page===1?q():rt(),t.page===g()?z():lt(),g()<=1?x.classList.add("display-none"):(x.classList.remove("display-none"),it(t))}async function bt(t){const e=await et(t);return ct(e.data.totalPages),e.data.results}function yt(){U.classList.add("display-none"),j.classList.remove("display-none"),J.classList.remove("display-none")}function Lt(){B.innerHTML="",U.classList.remove("display-none"),j.classList.add("display-none"),J.classList.add("display-none")}function G(){const t=vt.value.trim();l({...u(),keyword:t,page:1}),p()}function $t(t){const e=[];for(const n of t){const c=document.createElement("li");c.className="products-item",c.setAttribute("data-product-id",n._id);let i=`data-product-id="${n._id}"`,d=w+"#icon-shopping-cart",M="";L().includes(n._id)&&(i="",d=w+"#icon-check",M="stroke"),c.innerHTML=`
+    `}async function vt(t){const e=`https://food-boutique.b.goit.study/api/products/${t}`;return(await E.get(e)).data}function I(){$.show();const t=".detailed-product-info-modal-window .close-icon";document.querySelector(t).addEventListener("click",$.close),k=document.querySelector(".detailed-product-info-modal-window .addToCart-button"),k.addEventListener("click",mt)}const yt=document.getElementById("keyword-input"),B=document.getElementById("products"),x=document.getElementById("pages-panel"),J=document.getElementById("previous"),U=document.getElementById("next"),G=document.getElementById("nothing-found");async function g(){const t=u(),e=await bt(t);e.length>0?(Lt(),wt(e)):$t(),t.page===1?q():lt(),t.page===m()?z():ut(),m()<=1?x.classList.add("display-none"):(x.classList.remove("display-none"),rt(t))}async function bt(t){const e=await nt(t);return it(e.data.totalPages),e.data.results}function Lt(){G.classList.add("display-none"),J.classList.remove("display-none"),U.classList.remove("display-none")}function $t(){B.innerHTML="",G.classList.remove("display-none"),J.classList.add("display-none"),U.classList.add("display-none")}function K(){const t=yt.value.trim();l({...u(),keyword:t,page:1}),g()}function wt(t){const e=[];for(const s of t){const a=document.createElement("li");a.className="products-item",a.setAttribute("data-product-id",s._id);let i=`data-product-id="${s._id}"`,d=p+"#icon-shopping-cart",M="";w().includes(s._id)&&(i="",d=p+"#icon-check",M="stroke"),a.innerHTML=`
       <div class="card-img-container">
-        <img class="prodact-img" src="${n.img}" alt="${n.name}" />
+        <img class="prodact-img" src="${s.img}" alt="${s.name}" />
       </div>
-      <h3 class="product-title">${n.name}</h3>
+      <h3 class="product-title">${s.name}</h3>
       <div class="properties-and-price-continer">
         <ul class="product-properties-list">
           <li class="product-properties-item">
             Category:
-            <span class="property-value">${n.category.replaceAll("_"," ")}</span>
+            <span class="property-value">${s.category.replaceAll("_"," ")}</span>
           </li>
           <li class="product-properties-item">
-            Size: <span class="property-value">${n.size}</span>
+            Size: <span class="property-value">${s.size}</span>
           </li>
           <li class="product-properties-item">
-            Popularity: <span class="property-value">${n.popularity}</span>
+            Popularity: <span class="property-value">${s.popularity}</span>
           </li>
         </ul>
 
         <div class="price-and-buy-btn">
-          <span class="price">$${n.price}</span>
+          <span class="price">$${s.price}</span>
           <button class="circle-btn cart-btn product ${M}" type="button" ${i}>
             <svg class="btn-svg product">
               <use href="${d}"></use>
@@ -65,17 +65,17 @@ import{b as tt,g as L,e as $,s as f,f as et,i as w}from"./assets/footer-4ab1013f
           </button>
         </div>
       </div>
-    `,e.push(c)}B.innerHTML="",B.append(...e);const s=document.querySelectorAll("button[data-product-id]");for(const n of s)n.addEventListener("click",a);function a(n){const c=n.currentTarget,i=c.getAttribute("data-product-id");$(i),f(),c.innerHTML=`
+    `,e.push(a)}B.innerHTML="",B.append(...e);const n=document.querySelectorAll("button[data-product-id]");for(const s of n)s.addEventListener("click",c);function c(s){const a=s.currentTarget,i=a.getAttribute("data-product-id");P(i),h(),a.innerHTML=`
       <svg class="btn-svg product">
-        <use href="${w}#icon-check"></use>
+        <use href="${p}#icon-check"></use>
       </svg>
-    `,c.removeEventListener("click",a),c.classList.add("stroke")}const o=document.querySelectorAll("li.products-item");for(const n of o)n.addEventListener("click",c=>{const i=c.target.nodeName.toLowerCase();i==="button"||i==="svg"||i==="use"||E(n.getAttribute("data-product-id")).then(()=>{I()})})}f();st().then(()=>{R(),p()});const K=document.getElementById("filters-form"),wt=document.getElementById("category-select"),T=document.getElementById("categories");K.addEventListener("submit",Q);K.addEventListener("input",Q);async function Q(t){t.preventDefault(),at(1),G()}wt.addEventListener("mousedown",Pt);function Pt(t){t.preventDefault(),T.classList.toggle("display-none")}T.addEventListener("click",kt);function kt(t){const e=t.target;e.nodeName.toLowerCase()==="button"&&(l({...u(),category:e.getAttribute("data-value")}),T.classList.add("display-none"),G())}let F=null;window.addEventListener("resize",Bt);function Bt(){clearTimeout(F),F=setTimeout(()=>{R()},100)}const V=document.querySelector("ul.popular-products-list");Tt();V.addEventListener("click",Ct);async function Ct(t){let e=t.target;const s=e.nodeName.toLowerCase(),a=e;for(;e&&!e.classList.contains("popular-products-list-item");)e=e.parentElement;const o=e.dataset.id;s==="button"||s==="svg"||s==="use"?($(o),f(),It(a)):(await E(o),I())}const X="/images/svg/icons.svg#icon-check",Et="popular-product-shopping-cart-button";function It(t){for(;t&&!t.classList.contains(Et);)t=t.parentElement;t.classList.remove("svg-fill-container"),t.classList.add("svg-stroke-container"),t.firstElementChild.firstElementChild.setAttribute("href",X)}async function Tt(){const t=await St(),e=At(t);Mt(e)}function Mt(t){V.innerHTML=t}async function St(){const t="https://food-boutique.b.goit.study/api/products/popular";try{return(await C.get(t)).data}catch(e){console.log(e.message)}}function At(t){return t.map(s=>Nt(s)).join("")}function Nt(t){const e={src:t.img,alt:t.name},s={name:t.name,category:t.category,size:t.size,popularity:t.popularity};return`<li class="popular-products-list-item" data-id="${t._id}">
-    ${xt(e)}
-    ${Ft(s)}
-    ${qt(t._id)}
-    </li>`}function xt({src:t,alt:e}){return`<div class="popular-product-image-container">
+    `,a.removeEventListener("click",c),a.classList.add("stroke")}const o=document.querySelectorAll("li.products-item");for(const s of o)s.addEventListener("click",a=>{const i=a.target.nodeName.toLowerCase();i==="button"||i==="svg"||i==="use"||C(s.getAttribute("data-product-id")).then(()=>{I()})})}h();st().then(()=>{R(),g()});const Q=document.getElementById("filters-form"),Pt=document.getElementById("category-select"),T=document.getElementById("categories");Q.addEventListener("submit",V);Q.addEventListener("input",V);async function V(t){t.preventDefault(),at(1),K()}Pt.addEventListener("mousedown",kt);function kt(t){t.preventDefault(),T.classList.toggle("display-none")}T.addEventListener("click",Bt);function Bt(t){const e=t.target;e.nodeName.toLowerCase()==="button"&&(l({...u(),category:e.getAttribute("data-value")}),T.classList.add("display-none"),K())}let F=null;window.addEventListener("resize",Et);function Et(){clearTimeout(F),F=setTimeout(()=>{R()},100)}const X=document.querySelector("ul.popular-products-list");Mt();X.addEventListener("click",Ct);async function Ct(t){let e=t.target;const n=e.nodeName.toLowerCase(),c=e;for(;e&&!e.classList.contains("popular-products-list-item");)e=e.parentElement;const o=e.dataset.id;n==="button"||n==="svg"||n==="use"?(P(o),h(),Tt(c)):(await C(o),I())}const Y=`${p}#icon-check`,It="popular-product-shopping-cart-button";function Tt(t){for(;t&&!t.classList.contains(It);)t=t.parentElement;t.classList.remove("svg-fill-container"),t.classList.add("svg-stroke-container"),t.firstElementChild.firstElementChild.setAttribute("href",Y)}async function Mt(){const t=await At(),e=Nt(t);St(e)}function St(t){X.innerHTML=t}async function At(){const t="https://food-boutique.b.goit.study/api/products/popular";try{return(await E.get(t)).data}catch(e){console.log(e.message)}}function Nt(t){return t.map(n=>xt(n)).join("")}function xt(t){const e={src:t.img,alt:t.name},n={name:t.name,category:t.category,size:t.size,popularity:t.popularity};return`<li class="popular-products-list-item" data-id="${t._id}">
+    ${Ft(e)}
+    ${_t(n)}
+    ${zt(t._id)}
+    </li>`}function Ft({src:t,alt:e}){return`<div class="popular-product-image-container">
     <img src="${t}" alt="${e}" width="56" height="56" />
-    </div>`}function Ft({name:t,category:e,size:s,popularity:a}){return e=e.replace(/_/g," "),`<div class="popular-product-info-container">
+    </div>`}function _t({name:t,category:e,size:n,popularity:c}){return e=e.replace(/_/g," "),`<div class="popular-product-info-container">
     <p class="popular-product-title">${t}</p>
     <ul class="popular-product-characteristics-list">
         <li class="popular-product-characteristic">
@@ -84,34 +84,34 @@ import{b as tt,g as L,e as $,s as f,f as et,i as w}from"./assets/footer-4ab1013f
         </li>
         <li class="popular-product-characteristic">
         Size:
-        <span class="popular-product-characteristic-value">${s}</span>
+        <span class="popular-product-characteristic-value">${n}</span>
         </li>
         <li class="popular-product-characteristic">
         Popularity:
-        <span class="popular-product-characteristic-value">${a}</span>
+        <span class="popular-product-characteristic-value">${c}</span>
         </li>
     </ul>
-    </div>`}const _t="/images/svg/icons.svg#icon-shopping-cart";function qt(t){let e,s;return L().includes(t)?(e=X,s="svg-stroke-container"):(e=_t,s="svg-fill-container"),`<button class="popular-product-shopping-cart-button ${s}" type="button">
+    </div>`}const qt=`${p}#icon-shopping-cart`;function zt(t){let e,n;return w().includes(t)?(e=Y,n="svg-stroke-container"):(e=qt,n="svg-fill-container"),`<button class="popular-product-shopping-cart-button ${n}" type="button">
         <svg class="popular-product-shopping-cart-icon" width="12" height="12">
         <use href="${e}"></use>
         </svg>
-    </button>`}const zt=2,Y=document.querySelector("ul.discount-products-list");Ot();Y.addEventListener("click",Ht);async function Ht(t){let e=t.target;const s=e.nodeName.toLowerCase(),a=e;for(;e&&!e.classList.contains("discount-products-list-item");)e=e.parentElement;const o=e.dataset.id;s==="button"||s==="svg"&&t.target.parentElement.nodeName.toLowerCase()==="button"||s==="use"&&t.target.parentElement.nodeName.toLowerCase()==="button"?($(o),f(),Dt(a)):(await E(o),I())}const Z="/images/svg/icons.svg#icon-check",Wt="discount-product-shopping-cart-button";function Dt(t){for(;t&&!t.classList.contains(Wt);)t=t.parentElement;t.classList.remove("svg-fill-container"),t.classList.add("svg-stroke-container"),t.firstElementChild.firstElementChild.setAttribute("href",Z)}async function Ot(){let t=await Rt();t=t.slice(0,zt);const e=jt(t);Jt(e)}async function Rt(){const t="https://food-boutique.b.goit.study/api/products/discount";try{return(await C.get(t)).data}catch(e){console.log(e.message)}}function jt(t){return t.map(s=>Gt(s)).join("")}function Jt(t){Y.innerHTML=t}const Ut="/images/svg/icons.svg#icon-shopping-cart";function Gt(t){const e={src:t.img,alt:t.name},s={name:t.name,price:t.price};return`<li class="discount-products-list-item" data-id="${t._id}">
-    ${Vt(e)}
-    ${Kt(s,t._id)}
-    </li>`}function Kt(t,e){return`<div class="discount-product-bottom-panel-container">
-    ${Xt(t)}
-    ${Yt(e)}
-    </div>`}const Qt="/images/svg/icons.svg#icon-discount";function Vt({src:t,alt:e}){return`<div class="discount-product-image-container">
+    </button>`}const Ht=2,Z=document.querySelector("ul.discount-products-list");Rt();Z.addEventListener("click",Wt);async function Wt(t){let e=t.target;const n=e.nodeName.toLowerCase(),c=e;for(;e&&!e.classList.contains("discount-products-list-item");)e=e.parentElement;const o=e.dataset.id;n==="button"||n==="svg"&&t.target.parentElement.nodeName.toLowerCase()==="button"||n==="use"&&t.target.parentElement.nodeName.toLowerCase()==="button"?(P(o),h(),Ot(c)):(await C(o),I())}const tt=`${p}#icon-check`,Dt="discount-product-shopping-cart-button";function Ot(t){for(;t&&!t.classList.contains(Dt);)t=t.parentElement;t.classList.remove("svg-fill-container"),t.classList.add("svg-stroke-container"),t.firstElementChild.firstElementChild.setAttribute("href",tt)}async function Rt(){let t=await jt();t=t.slice(0,Ht);const e=Jt(t);Ut(e)}async function jt(){const t="https://food-boutique.b.goit.study/api/products/discount";try{return(await E.get(t)).data}catch(e){console.log(e.message)}}function Jt(t){return t.map(n=>Kt(n)).join("")}function Ut(t){Z.innerHTML=t}const Gt=`${p}#icon-shopping-cart`;function Kt(t){const e={src:t.img,alt:t.name},n={name:t.name,price:t.price};return`<li class="discount-products-list-item" data-id="${t._id}">
+    ${Xt(e)}
+    ${Qt(n,t._id)}
+    </li>`}function Qt(t,e){return`<div class="discount-product-bottom-panel-container">
+    ${Yt(t)}
+    ${Zt(e)}
+    </div>`}const Vt=`${p}#icon-discount`;function Xt({src:t,alt:e}){return`<div class="discount-product-image-container">
     <img src="${t}" alt="${e}" width="114" height="114" />
         <div class="discount-icon-container">
             <svg class="discount-icon" width="54" height="54">
-                <use href="${Qt}"></use>
+                <use href="${Vt}"></use>
             </svg>
         </div>
-    </div>`}function Xt({name:t,price:e}){return`<div class="discount-product-info-container">
+    </div>`}function Yt({name:t,price:e}){return`<div class="discount-product-info-container">
     <span>${t}</span>
     <span>$${e}</span>
-    </div>`}function Yt(t){let e,s;return L().includes(t)?(e=Z,s="svg-stroke-container"):(e=Ut,s="svg-fill-container"),`<button class="discount-product-shopping-cart-button ${s}" type="button">
+    </div>`}function Zt(t){let e,n;return w().includes(t)?(e=tt,n="svg-stroke-container"):(e=Gt,n="svg-fill-container"),`<button class="discount-product-shopping-cart-button ${n}" type="button">
         <svg class="popular-product-shopping-cart-icon" width="18" height="18">
         <use href="${e}"></use>
         </svg>
