@@ -26,4 +26,4 @@ import{a}from"./vendor-bb737cb9.js";(function(){const s=document.createElement("
         </svg>
     </div>
     `}const m=document.querySelector("form.subscribe-form");m.addEventListener("submit",$);let u;async function $(e){e.preventDefault();const n={email:document.querySelector("input.subscribe-form-email-field").value};m.reset();const i=await I(n);let t,o;i===201?(t=v(),o=".footer-modal-window .close-icon"):(t=x(),o=".footer-error-modal-window .close-icon"),u=basicLightbox.create(t),u.show(),document.querySelector(o).addEventListener("click",u.close),document.addEventListener("keydown",f)}function f(e){e.key==="Escape"&&(u.close(),document.removeEventListener("keydown",f))}async function I(e){const s="https://food-boutique.b.goit.study/api/subscription";try{return(await a.post(s,e)).status}catch(n){return n.response.status}}export{M as a,C as b,P as c,S as d,L as e,k as f,r as g,p as i,E as s};
-//# sourceMappingURL=footer-0f3d00bb.js.map
+//# sourceMappingURL=footer-b2644413.js.map
