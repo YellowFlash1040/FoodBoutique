@@ -4,24 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="/FoodBoutique/images/svg/site-icon.svg" />
-    <title>Food Boutique</title>
+    <title>Cart</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.css"
-    />
     
     
     
-    <script type="module" crossorigin src="/FoodBoutique/commonHelpers2.js"></script>
+    
+    <script type="module" crossorigin src="/FoodBoutique/commonHelpers.js"></script>
     <link rel="modulepreload" crossorigin href="/FoodBoutique/assets/vendor-bb737cb9.js">
     <link rel="modulepreload" crossorigin href="/FoodBoutique/assets/footer-8a0d29db.js">
     <link rel="stylesheet" href="/FoodBoutique/assets/footer-1d8df6c3.css">
+    <link rel="stylesheet" href="/FoodBoutique/assets/cart-eaecb3ea.css">
   </head>
   <body>
+    <!-- Header -->
     <header class="container page-header">
   <a class="logo" href="./index.html">
     <svg class="logo-icon">
@@ -43,132 +42,76 @@
   </nav>
 </header>
 
+    <!-- main -->
     <main>
-      <section class="container hero-sect">
-  <h1 class="hero-title">
-    Welcome to the <span class="accent">Food</span> Boutique!
-  </h1>
-  <p class="hero-desc">
-    With Food Boutique, you're not just subscribing to food, you're signing up
-    for a fresher, fitter, and happier you.
-  </p>
-  <div class="hero-img-container">
-    <picture>
-      <source
-        srcset="/FoodBoutique/images/jpg/hero-desctop.jpg"
-        media="(min-width: 1440px)"
-      />
-      <source
-        srcset="/FoodBoutique/images/jpg/hero-img-tablet.jpg"
-        media="(min-width: 768px)"
-      />
+  <section class="cart-sect container">
+    <div class="cart-items-panel-container">
+      <div class="cart-items-quantity">
+        <span class="circle-btn cart-btn">
+          <svg class="btn-svg cart-btn-svg cart">
+            <use href="/FoodBoutique/images/svg/icons.svg#icon-shopping-cart"></use>
+          </svg>
+        </span>
+        <h1 class="cart-page-title" id="cart-quantity-title">cart (0)</h1>
+      </div>
 
+      <div class="delete-all">
+        <button type="button" class="delete-all-btn" id="delete-all-btn">
+          Delete all
+
+          <svg class="clos-svg">
+            <use href="/FoodBoutique/images/svg/icons.svg#icon-close"></use>
+          </svg>
+        </button>
+      </div>
+
+      <ul class="cart-items-list" id="cart-items-list"></ul>
+    </div>
+
+    <div class="checkout-panel-container">
+      <h2 class="cart-page-title your-order-title">your order</h2>
+      <div class="total-container">
+        <h3 class="total-title">Total</h3>
+        <p>
+          <span class="sum">
+            Sum:
+          </span>
+          <span class="sum-span" id="sum-span"></span>
+        </p>
+      </div>
+      <form class="checkout-form">
+        <div class="mail-field-container">
+          <label class="email-label" for="email">Mail: </label>
+          <input
+            class="mail-field"
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Enter your email"
+          />
+        </div>
+        <button class="checkout-button" type="submit">Checkout</button>
+      </form>
+    </div>
+
+    <div class="nothing-found-cart-div" id="nothing-found-cart">
       <img
-        class="hero-img"
-        src="/FoodBoutique/images/jpg/hero-img.jpg"
-        alt="a box full of vegetables"
+        class="nothing-found-cart-img"
+        src="/FoodBoutique/images/png/nothing-found-cart.png"
+        alt="a cart"
       />
-    </picture>
-
-    <img
-      class="organic-img"
-      src="/FoodBoutique/images/png/organic.png"
-      alt="organic food logo"
-    />
-  </div>
-</section>
-
-      <section class="container filters-sect">
-  <h2 class="visually-hidden">Filter goods</h2>
-  <p class="filters-title">Filters:</p>
-  <form id="filters-form">
-    <label class="field-label">
-      <input
-        class="field"
-        type="text"
-        name="keyword"
-        id="keyword-input"
-        placeholder="Search for anything"
-      />
-      <svg class="input-icon">
-        <use href="/FoodBoutique/images/svg/icons.svg#icon-search"></use>
-      </svg>
-    </label>
-    <label class="field-label">
-      <select class="field select" name="category" id="category-select">
-        <option value="">Categories</option>
-      </select>
-      <ul class="categories-list display-none" id="categories"></ul>
-      <svg class="input-icon stroke-icon">
-        <use href="/FoodBoutique/images/svg/icons.svg#icon-chevron-down"></use>
-      </svg>
-    </label>
-  </form>
-</section>
-
-      <div class="container products-and-aside-container">
-  <section class="products-sect">
-  <h2 class="visually-hidden">Products List</h2>
-  <ul class="products-list" id="products"></ul>
-  <div class="nothing-found display-none" id="nothing-found">
-    <p class="nothing-found-title">
-      Nothing was found for the selected <span class="accent">filters...</span>
-    </p>
-    <p class="nothing-found-description">
-      Try adjusting your search parameters or browse our range by other criteria
-      to find the perfect product for you.
-    </p>
-  </div>
-  <div class="pages-panel" id="pages-panel">
-    <div class="turn-page-buttons">
-      <button type="button" class="turn-page-btn circle-btn" id="to-the-start">
-        <svg class="btn-svg product">
-          <use href="/FoodBoutique/images/svg/icons.svg#icon-double-previous"></use>
-        </svg>
-      </button>
-      <button type="button" class="turn-page-btn circle-btn" id="previous">
-        <svg class="btn-svg product">
-          <use href="/FoodBoutique/images/svg/icons.svg#icon-previous"></use>
-        </svg>
-      </button>
+      <p class="nothing-found-cart-title">
+        Your basket is <span class="accent">empty...</span>
+      </p>
+      <p class="nothing-found-cart-desc">
+        Go to the main page to select your favorite products and add them to the
+        cart.
+      </p>
     </div>
-    <ul class="pages-list" id="pages-list"></ul>
-    <div class="turn-page-buttons">
-      <button type="button" class="turn-page-btn circle-btn" id="next">
-        <svg class="btn-svg product">
-          <use href="/FoodBoutique/images/svg/icons.svg#icon-next"></use>
-        </svg>
-      </button>
-      <button type="button" class="turn-page-btn circle-btn" id="to-the-end">
-        <svg class="btn-svg product">
-          <use href="/FoodBoutique/images/svg/icons.svg#icon-double-next"></use>
-        </svg>
-      </button>
-    </div>
-  </div>
-</section>
+  </section>
+</main>
 
-  <!--Product adverbs-->
-<aside class="product-adverbs-section">
-  <ul class="product-adverbs-list">
-    <li>
-      <!-- Popular products -->
-<h2 class="popular-products-section-title">Popular products</h2>
-<ul class="popular-products-list"></ul>
-
-    </li>
-    <li>
-      <!-- Discount products -->
-<h2 class="discount-products-section-title">Discount products</h2>
-<ul class="discount-products-list"></ul>
-
-    </li>
-  </ul>
-</aside>
-
-</div>
-
-    </main>
+    <!-- footer -->
     <!--Footer-->
 <footer>
   <div class="container footer-container">
@@ -257,12 +200,5 @@
   </div>
 </footer>
 
-
-    <!-- JavaScript Scripts -->
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
   </body>
 </html>
