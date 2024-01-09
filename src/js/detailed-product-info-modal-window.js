@@ -1,8 +1,9 @@
 import axios from "axios";
 import * as page from "./partials/cart.js";
+import icons from "/images/svg/icons.svg";
 
-const cartIconPath = "/images/svg/icons.svg#icon-shopping-cart";
-const closeModalWindowIconPath = "/images/svg/icons.svg#icon-close";
+const cartIconPath = `${icons}#icon-shopping-cart`;
+const closeModalWindowIconPath = `${icons}#icon-close`;
 
 let modalWindow;
 
