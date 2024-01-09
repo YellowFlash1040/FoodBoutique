@@ -27,6 +27,12 @@ import icons from "/images/svg/icons.svg";
 
 export async function fillProductsList() {
   const filters = getFilters();
+
+  const categorySelect = document.getElementById("category-select");
+  if (filters.category) {
+    categorySelect.options[0].innerText = filters.category.replaceAll("_", " ");
+  } else categorySelect.options[0].innerText = "Show all";
+
   const hits = await searchProducts(filters);
 
   // If nothing is found show nothing found div
@@ -160,7 +166,7 @@ function createCardsForProductsList(hits) {
   const productsItem = document.querySelectorAll("li.products-item");
 
   for (const item of productsItem) {
-    item.addEventListener("click", (evt) => {
+    item.addEventListener("click", evt => {
       const name = evt.target.nodeName.toLowerCase();
       if (name === "button" || name === "svg" || name === "use") return;
 
