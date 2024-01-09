@@ -1,4 +1,6 @@
-const closeModalWindowIconPath = "/images/svg/icons.svg#icon-close";
+import icons from "/images/svg/icons.svg";
+
+const closeModalWindowIconPath = `${icons}#icon-close`;
 
 export function createMarkup()
 {

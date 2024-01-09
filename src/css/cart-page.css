@@ -40,7 +40,7 @@
   height: 24px;
 }
 .cart-items-list {
-  max-height: 480px;
+  max-height: 500px;
   overflow-y: auto;
 }
 .cart-products-item {
@@ -190,6 +190,9 @@
 }
 
 @media only screen and (min-width: 1440px) {
+  .cart-products-item {
+    width: 540px;
+  }
   .cart-items-panel-container {
     margin-right: 101px;
   }
@@ -283,14 +286,14 @@
 
     padding: 15px 0;
   }
+  .cart-items-list {
+    max-height: 600px;
+  }
 }
 
 @media (min-width: 1440px) {
   .nothing-found-cart-div {
     padding-top: 126px;
     padding-bottom: 70px;
-  }
-  .cart-items-list {
-    max-height: 600px;
   }
 }
