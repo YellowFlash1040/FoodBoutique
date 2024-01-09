@@ -141,6 +141,9 @@
 }
 
 @media screen and (min-width: 768px) {
+  .cart-products-item {
+    padding: 40px 0;
+  }
   .cart-page-title {
     font-size: 32px;
   }
@@ -195,15 +198,6 @@
   row-gap: 14px;
 }
 
-@media only screen and (min-width: 768px) {
-  .checkout-form {
-    flex-direction: row;
-    column-gap: 16px;
-
-    max-width: 590px;
-  }
-}
-
 .checkout-form .mail-field-container {
   position: relative;
 
@@ -214,28 +208,12 @@
   line-height: 1.29;
 }
 
-@media only screen and (min-width: 768px) {
-  .checkout-form .mail-field-container {
-    max-width: 359px;
-    width: 359px;
-
-    font-size: 18px;
-    line-height: 1.33;
-  }
-}
-
 .checkout-form .email-label {
   position: absolute;
   top: 12px;
   left: 20px;
 
   color: var(--black-50);
-}
-
-@media only screen and (min-width: 768px) {
-  .checkout-form .email-label {
-    top: 15px;
-  }
 }
 
 .checkout-form .mail-field {
@@ -252,12 +230,6 @@
 
   font-size: inherit;
   line-height: inherit;
-}
-
-@media only screen and (min-width: 768px) {
-  .checkout-form .mail-field {
-    padding: 15px 20px 15px 63px;
-  }
 }
 
 .checkout-form .mail-field::placeholder {
@@ -280,6 +252,25 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .checkout-form {
+    flex-direction: row;
+    column-gap: 16px;
+
+    max-width: 590px;
+  }
+  .checkout-form .mail-field-container {
+    max-width: 359px;
+    width: 359px;
+
+    font-size: 18px;
+    line-height: 1.33;
+  }
+  .checkout-form .email-label {
+    top: 15px;
+  }
+  .checkout-form .mail-field {
+    padding: 15px 20px 15px 63px;
+  }
   .checkout-form .checkout-button {
     max-width: 215px;
     width: 215px;
