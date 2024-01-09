@@ -139,6 +139,9 @@
   font-weight: 400;
   line-height: 1.28; /* 128.571% */
 }
+.product-properties-list {
+  margin-bottom: 30px;
+}
 
 @media screen and (min-width: 768px) {
   .cart-products-item {

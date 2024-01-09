@@ -67,22 +67,18 @@ function createCartCards(hits) {
       <div class="cart-product-img-container">
         <img class="cart-product-img" src="${hit.img}" alt="${hit.name}" />
       </div>
-      <div class="properties-and-price-continer">
+      <div>
         <h3 class="product-title">${hit.name}</h3>
-
         <ul class="product-properties-list">
           <li class="product-properties-item">
             Category:
-            <span class="property-value">${hit.category.replaceAll(
-              "_",
-              " "
-            )}</span>
+            <span class="property-value">${hit.category.replaceAll( "_", " " )}</span>
           </li>
           <li class="product-properties-item">
             Size: <span class="property-value">${hit.size}</span>
           </li>
         </ul>
-
+      
         <span class="price">$${hit.price}</span>
       </div>
       <button class="delete-from-cart-btn" ${dataProductId}>
