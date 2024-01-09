@@ -23,6 +23,8 @@ import { addToCart, showCartAmount } from "./cart";
 import { getProducts } from "./requests";
 import { create, show } from "../detailed-product-info-modal-window";
 
+import icons from "/images/svg/icons.svg";
+
 export async function fillProductsList() {
   const filters = getFilters();
   const hits = await searchProducts(filters);
@@ -87,12 +89,12 @@ function createCardsForProductsList(hits) {
     li.setAttribute("data-product-id", hit._id);
 
     let dataProductId = `data-product-id="${hit._id}"`;
-    let svgUrl = "/images/svg/icons.svg#icon-shopping-cart";
+    let svgUrl = icons + "#icon-shopping-cart";
     let stroke = "";
 
     if (getInCart().includes(hit._id)) {
       dataProductId = "";
-      svgUrl = "/images/svg/icons.svg#icon-check";
+      svgUrl = icons + "#icon-check";
       stroke = "stroke";
     }
 
