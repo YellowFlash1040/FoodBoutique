@@ -1,4 +1,5 @@
 const keywordInput = document.getElementById("keyword-input");
+const categorySelect = document.getElementById("category-select");
 
 const filters = getFilters();
 if (!filters) {
@@ -10,6 +11,10 @@ if (!filters) {
   });
 } else {
   keywordInput.value = filters.keyword;
+
+  if (filters.category) {
+    categorySelect.options[0].innerText = filters.category.replaceAll("_", " ");
+  } else categorySelect.options[0].innerText = "Show all";
 }
 
 export function setFilters(filters) {
