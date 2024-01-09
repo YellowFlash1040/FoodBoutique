@@ -5,6 +5,8 @@ import * as footerErrorModalWindow from "./footer-error-modal-window.js";
 const subscribe_form = document.querySelector("form.subscribe-form");
 subscribe_form.addEventListener("submit", form_Submit);
 
+let modalWindow;
+
 async function form_Submit(event)
 {
     event.preventDefault();
@@ -31,11 +33,21 @@ async function form_Submit(event)
         closeModalWindowButton_Selector = ".footer-error-modal-window .close-icon";
     }
 
-    const modalWindow = basicLightbox.create(markup);
+    modalWindow = basicLightbox.create(markup);
     modalWindow.show();
 
     const closeModalWindowButton = document.querySelector(closeModalWindowButton_Selector);
     closeModalWindowButton.addEventListener("click", modalWindow.close);
+    document.addEventListener("keydown", closeLightBox);
+}
+
+function closeLightBox(event)
+{
+    if (event.key === 'Escape')
+    {
+        modalWindow.close();
+        document.removeEventListener("keydown", closeLightBox);
+    }
 }
 
 async function sendEmailToBackEnd(data)
