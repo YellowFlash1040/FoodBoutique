@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as productInfoModalWindow from "./detailed-product-info-modal-window.js";
 import * as page from "./partials/cart.js";
+import icons from "/images/svg/icons.svg";
 
 const popularProducts = document.querySelector("ul.popular-products-list");
 
@@ -34,7 +35,7 @@ async function productClick(event)
     }
 }
 
-const checkedIconPath = "/images/svg/icons.svg#icon-check";
+const checkedIconPath = `${icons}#icon-check`;
 const cartButtonSelector = "popular-product-shopping-cart-button";
 
 function changeButtonIcon(clickedElement)
@@ -137,7 +138,7 @@ function createProductInfoMarkup({ name, category, size, popularity })
     </div>`;
 }
 
-const shoppingCartIconPath = "/images/svg/icons.svg#icon-shopping-cart";
+const shoppingCartIconPath = `${icons}#icon-shopping-cart`;
 
 function createAddToCardButton(id)
 {
