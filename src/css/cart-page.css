@@ -1,3 +1,25 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+main {
+  flex: 1;
+}
+
+.page-header,
+.cart-sect,
+main {
+  width: 100%;
+  max-width: 375px;
+  margin: 0;
+}
+
+footer {
+  width: 100%;
+}
+
 .cart-sect {
   padding-top: 54px;
   padding-bottom: 80px;
@@ -144,6 +166,11 @@
 }
 
 @media screen and (min-width: 768px) {
+  .page-header,
+  .cart-sect,
+  main {
+    max-width: 768px;
+  }
   .cart-products-item {
     padding: 40px 0;
   }
@@ -178,6 +205,11 @@
 }
 
 @media only screen and (min-width: 1440px) {
+  .page-header,
+  .cart-sect,
+  main {
+    max-width: 1440px;
+  }
   .cart-sect {
     justify-content: space-between;
   }
