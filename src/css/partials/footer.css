@@ -100,6 +100,12 @@ footer {
 }
 /*End of Social links panel*/
 
+@media only screen and (max-width: 374px) {
+    .footer-middle-containers-wrapper {
+        width: 100%;
+    }
+}
+
 .footer-middle-containers-wrapper {
     display: flex;
     flex-direction: column;
@@ -252,14 +258,18 @@ footer {
     padding-top: 12px;
     padding-bottom: 12px;
 
-    min-width: 335px;
-
     line-height: 1.29;
     font-weight: 500;
 
     cursor: pointer;
 
     transition: color var(--transition-options);
+}
+
+@media only screen and (min-width: 375px) {
+    .send-button {
+        min-width: 335px;
+    }
 }
 
 @media only screen and (min-width: 768px) {
