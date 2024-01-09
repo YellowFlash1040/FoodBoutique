@@ -16,6 +16,16 @@ export async function create(productId)
 function createModalWindow(markup)
 {
     modalWindow = basicLightbox.create(markup);
+    document.addEventListener("keydown", closeLightBox);
+}
+
+function closeLightBox(event)
+{
+    if (event.key === 'Escape')
+    {
+        modalWindow.close();
+        document.removeEventListener("keydown", closeLightBox);
+    }
 }
 
 function addToCart(event)

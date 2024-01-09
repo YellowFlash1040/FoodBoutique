@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as productInfoModalWindow from "./detailed-product-info-modal-window";
 import * as page from "./partials/cart.js";
+import icons from "/images/svg/icons.svg";
 
 const countOfProductsToLoad = 2;
 
@@ -37,7 +38,7 @@ async function productClick(event)
     }
 }
 
-const checkedIconPath = "/images/svg/icons.svg#icon-check";
+const checkedIconPath = `${icons}#icon-check`;
 const cartButtonSelector = "discount-product-shopping-cart-button";
 
 function changeButtonIcon(clickedElement)
@@ -89,7 +90,7 @@ function addDiscountProductsMarkupToThePage(markup)
     discountProducts.innerHTML = markup;
 }
 
-const shoppingCartIconPath = "/images/svg/icons.svg#icon-shopping-cart";
+const shoppingCartIconPath = `${icons}#icon-shopping-cart`;
 
 function createDiscountProductItemMarkup(product)
 {
@@ -119,7 +120,7 @@ function createCardBottomPanelMarkup(info, id)
     </div>`;
 }
 
-const discountIconPath = "/images/svg/icons.svg#icon-discount";
+const discountIconPath = `${icons}#icon-discount`;
 
 function createProductImageCardMarkup({src, alt})
 {
