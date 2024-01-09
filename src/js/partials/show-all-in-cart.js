@@ -90,8 +90,11 @@ function createCartCards(hits) {
       </button>
     `;
 
+    
     items.push(li);
   }
+
+  totalPrice =  totalPrice.toFixed(2);
 
   cartItemsList.innerHTML = "";
   cartItemsList.append(...items);
