@@ -2,6 +2,7 @@ import axios from "axios";
 import * as productInfoModalWindow from "./detailed-product-info-modal-window.js";
 import * as page from "./partials/cart.js";
 import icons from "/images/svg/icons.svg";
+import { refreshPageIcons } from "./partials/refreshPageIcons.js";
 
 const popularProducts = document.querySelector("ul.popular-products-list");
 
@@ -29,12 +30,14 @@ async function productClick(event)
             page.addToCart(id);
             page.showCartAmount();
             changeButtonIcon(addToCartButton);
+            refreshPageIcons(id, false);
         }
         else
         {
             page.deleteFromCart(id);
             page.showCartAmount();
             changeButtonIconBack(addToCartButton);
+            refreshPageIcons(id, true);
         }
     }
     else

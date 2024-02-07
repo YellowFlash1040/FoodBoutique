@@ -1,0 +1,8 @@
+.svg-stroke-container {
+    stroke: var(--grey);
+    fill: none;
+}
+
+.svg-fill-container {
+    fill: var(--grey);
+}

@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as page from "./partials/cart.js";
 import icons from "/images/svg/icons.svg";
+import { refreshPageIcons } from "./partials/refreshPageIcons.js";
 
 const cartIconPath = `${icons}#icon-shopping-cart`;
 const closeModalWindowIconPath = `${icons}#icon-close`;
@@ -41,17 +42,20 @@ function isAddedToCart(id)
 function addToCart(event)
 {
     const id = event.currentTarget.dataset.id;
+
     if (!isAddedToCart(id))
     {
         page.addToCart(id);
         page.showCartAmount();
         changeTextOnButton();
+        refreshPageIcons(id, false);
     }
     else
     {
         page.deleteFromCart(id);
         page.showCartAmount();
         changeTextOnButtonBack();
+        refreshPageIcons(id, true);
     }
 }
 
