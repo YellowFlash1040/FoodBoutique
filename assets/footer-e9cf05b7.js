@@ -26,4 +26,4 @@ import{a as i}from"./vendor-bb737cb9.js";(function(){const o=document.createElem
         </svg>
     </div>
     `}const m=document.querySelector("form.subscribe-form");m.addEventListener("submit",x);let l;async function x(e){e.preventDefault();const n={email:document.querySelector("input.subscribe-form-email-field").value};m.reset();const c=await B(n);let t,s;c===201?(t=q(),s=".footer-modal-window .close-icon"):(t=S(),s=".footer-error-modal-window .close-icon");const r={onClose:$};l=basicLightbox.create(t,r);const g="disableBodyScroll";bodyScrollLock[g](document.body),l.show(),document.querySelector(s).addEventListener("click",l.close),document.addEventListener("keydown",f)}function $(){const e="enableBodyScroll";bodyScrollLock[e](document.body)}function f(e){e.key==="Escape"&&(l.close(),document.removeEventListener("keydown",f))}async function B(e){const o="https://food-boutique.b.goit.study/api/subscription";try{return(await i.post(o,e)).status}catch(n){return n.response.status}}export{F as a,W as b,C as c,E as d,P as e,O as f,a as g,p as i,M as s};
-//# sourceMappingURL=footer-7b8f9065.js.map
+//# sourceMappingURL=footer-e9cf05b7.js.map
