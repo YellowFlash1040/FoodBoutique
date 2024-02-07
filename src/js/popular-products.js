@@ -2,6 +2,7 @@ import axios from "axios";
 import * as productInfoModalWindow from "./detailed-product-info-modal-window.js";
 import * as page from "./partials/cart.js";
 import icons from "/images/svg/icons.svg";
+import { refreshPageIcons } from "./partials/refreshPageIcons.js";
 
 const popularProducts = document.querySelector("ul.popular-products-list");
 
@@ -10,29 +11,30 @@ popularProducts.addEventListener("click", productClick);
 
 async function productClick(event)
 {
-    let clickedElement = event.target;
+  let clickedElement = event.target;
     
-    const name = clickedElement.nodeName.toLowerCase();
-    const addToCartButton = clickedElement;
+  const name = clickedElement.nodeName.toLowerCase();
+  const addToCartButton = clickedElement;
 
-    while (clickedElement && !clickedElement.classList.contains('popular-products-list-item'))
-    {
-        clickedElement = clickedElement.parentElement;
-    }
+  while (clickedElement && !clickedElement.classList.contains('popular-products-list-item'))
+  {
+    clickedElement = clickedElement.parentElement;
+  }
 
-    const id = clickedElement.dataset.id;
+  const id = clickedElement.dataset.id;
 
-    if (name === "button" || name === "svg" || name === "use")
-    {
-        page.addToCart(id);
-        page.showCartAmount();
-        changeButtonIcon(addToCartButton);
-    }
-    else
-    {
-        await productInfoModalWindow.create(id);
-        productInfoModalWindow.show();
-    }
+  if (name === "button" || name === "svg" || name === "use")
+  {
+    page.addToCart(id);
+    page.showCartAmount();
+    changeButtonIcon(addToCartButton);
+    refreshPageIcons(id, false);
+  }
+  else
+  {
+    await productInfoModalWindow.create(id);
+    productInfoModalWindow.show();
+  }
 }
 
 const checkedIconPath = `${icons}#icon-check`;

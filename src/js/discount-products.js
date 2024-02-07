@@ -2,6 +2,7 @@ import axios from "axios";
 import * as productInfoModalWindow from "./detailed-product-info-modal-window";
 import * as page from "./partials/cart.js";
 import icons from "/images/svg/icons.svg";
+import { refreshPageIcons } from "./partials/refreshPageIcons.js";
 
 const countOfProductsToLoad = 2;
 
@@ -30,6 +31,7 @@ async function productClick(event)
         page.addToCart(id);
         page.showCartAmount();
         changeButtonIcon(addToCartButton);
+        refreshPageIcons(id, false);
     }
     else
     {

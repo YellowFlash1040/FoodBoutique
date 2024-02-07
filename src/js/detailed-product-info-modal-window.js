@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as page from "./partials/cart.js";
 import icons from "/images/svg/icons.svg";
+import { refreshPageIcons } from "./partials/refreshPageIcons.js";
 
 const cartIconPath = `${icons}#icon-shopping-cart`;
 const closeModalWindowIconPath = `${icons}#icon-close`;
@@ -39,6 +40,7 @@ function addToCart(event)
     page.addToCart(id);
     page.showCartAmount();
     changeTextOnButton();
+    refreshPageIcons(id, false);
 }
 
 let addToCartButton;
