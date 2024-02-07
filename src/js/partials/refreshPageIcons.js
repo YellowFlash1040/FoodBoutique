@@ -1,7 +1,10 @@
 import icons from "/images/svg/icons.svg";
+import * as page from "../partials/cart";
 
-const checkedIconPath = `${icons}#icon-check`;
-const shoppingCartIconPath = `${icons}#icon-shopping-cart`;
+export const checkedIconPath = `${icons}#icon-check`;
+export const shoppingCartIconPath = `${icons}#icon-shopping-cart`;
+
+export const discountIconPath = `${icons}#icon-discount`;
 
 export function refreshPageIcons(id, added)
 {
@@ -35,4 +38,9 @@ export function refreshPageIcons(id, added)
       icon.parentElement.parentElement.classList.add(classToAdd);
     } 
   }
+}
+
+export function isAddedToCart(id)
+{
+  return page.getInCart().includes(id);
 }
