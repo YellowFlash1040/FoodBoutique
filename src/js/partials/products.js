@@ -24,6 +24,7 @@ import { getProducts } from "./requests"
 import { create, show } from "../detailed-product-info-modal-window"
 
 import icons from "/images/svg/icons.svg"
+import { refreshPageIcons } from "./refreshPageIcons"
 
 export async function fillProductsList() {
   const filters = getFilters()
@@ -161,6 +162,7 @@ function createCardsForProductsList(hits) {
         </svg>
       `
       btn.classList.add("stroke")
+      refreshPageIcons(id, false)
     } else {
       deleteFromCart(id)
       showCartAmount()
@@ -170,6 +172,7 @@ function createCardsForProductsList(hits) {
         </svg>
       `
       btn.classList.remove("stroke")
+      refreshPageIcons(id, true)
     }
   }
 
