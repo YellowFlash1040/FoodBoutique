@@ -1,8 +1,7 @@
 import axios from "axios";
 import * as productInfoModalWindow from "./detailed-product-info-modal-window.js";
 import * as page from "./partials/cart.js";
-import icons from "/images/svg/icons.svg";
-import { refreshPageIcons } from "./partials/refreshPageIcons.js";
+import { refreshPageIcons, isAddedToCart, checkedIconPath, shoppingCartIconPath } from "./partials/refreshPageIcons.js";
 
 const popularProducts = document.querySelector("ul.popular-products-list");
 
@@ -14,7 +13,6 @@ async function productClick(event)
     let clickedElement = event.target;
     
     const name = clickedElement.nodeName.toLowerCase();
-    const addToCartButton = clickedElement;
 
     while (clickedElement && !clickedElement.classList.contains('popular-products-list-item'))
     {
@@ -29,14 +27,12 @@ async function productClick(event)
         {
             page.addToCart(id);
             page.showCartAmount();
-            changeButtonIcon(addToCartButton);
             refreshPageIcons(id, false);
         }
         else
         {
             page.deleteFromCart(id);
             page.showCartAmount();
-            changeButtonIconBack(addToCartButton);
             refreshPageIcons(id, true);
         }
     }
@@ -45,44 +41,6 @@ async function productClick(event)
         await productInfoModalWindow.create(id);
         productInfoModalWindow.show();
     }
-}
-
-function isAddedToCart(id)
-{
-  return page.getInCart().includes(id);
-}
-
-const checkedIconPath = `${icons}#icon-check`;
-const cartButtonSelector = "popular-product-shopping-cart-button";
-
-function changeButtonIcon(clickedElement)
-{
-    while (clickedElement && !clickedElement.classList.contains(cartButtonSelector))
-    {
-        clickedElement = clickedElement.parentElement;
-    }
-
-    clickedElement.classList.remove('svg-fill-container');
-    clickedElement.classList.add('svg-stroke-container');
-
-    const buttonIcon = clickedElement.firstElementChild.firstElementChild;
-    buttonIcon.setAttribute('href', checkedIconPath);
-}
-
-const cartIconPath = `${icons}#icon-shopping-cart`;
-
-export function changeButtonIconBack(clickedElement)
-{
-  while (clickedElement && !clickedElement.classList.contains(cartButtonSelector))
-  {
-    clickedElement = clickedElement.parentElement;
-  }
-
-  clickedElement.classList.remove('svg-stroke-container');
-  clickedElement.classList.add('svg-fill-container');
-
-  const buttonIcon = clickedElement.firstElementChild.firstElementChild;
-  buttonIcon.setAttribute('href', cartIconPath);
 }
 
 async function fillPopularProducts()
@@ -170,8 +128,6 @@ function createProductInfoMarkup({ name, category, size, popularity })
     </ul>
     </div>`;
 }
-
-const shoppingCartIconPath = `${icons}#icon-shopping-cart`;
 
 function createAddToCardButton(id)
 {

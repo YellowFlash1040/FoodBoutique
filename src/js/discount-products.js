@@ -1,8 +1,7 @@
 import axios from "axios";
 import * as productInfoModalWindow from "./detailed-product-info-modal-window";
 import * as page from "./partials/cart.js";
-import icons from "/images/svg/icons.svg";
-import { refreshPageIcons } from "./partials/refreshPageIcons.js";
+import { refreshPageIcons, checkedIconPath, shoppingCartIconPath, isAddedToCart, discountIconPath } from "./partials/refreshPageIcons.js";
 
 const countOfProductsToLoad = 2;
 
@@ -17,7 +16,6 @@ async function productClick(event)
   let clickedElement = event.target;
 
   const name = clickedElement.nodeName.toLowerCase();
-  const addToCartButton = clickedElement;
 
   while (clickedElement && !clickedElement.classList.contains('discount-products-list-item'))
   {
@@ -26,20 +24,18 @@ async function productClick(event)
 
   const id = clickedElement.dataset.id;
 
-  if (name === "button" || name === "svg" && event.target.parentElement.nodeName.toLowerCase() === "button" || name === "use" && event.target.parentElement.nodeName.toLowerCase() === "button")
+  if (name === "button" || (name === "svg" && event.target.parentElement.nodeName.toLowerCase() === "button") || (name === "use" && event.target.parentElement.parentElement.nodeName.toLowerCase() === "button"))
   {
     if (!isAddedToCart(id))
     {
         page.addToCart(id);
         page.showCartAmount();
-        changeButtonIcon(addToCartButton);
         refreshPageIcons(id, false);
     }
     else
     {
       page.deleteFromCart(id);
       page.showCartAmount();
-      changeButtonIconBack(addToCartButton);
       refreshPageIcons(id, true);
     }
   }
@@ -48,44 +44,6 @@ async function productClick(event)
     await productInfoModalWindow.create(id);
     productInfoModalWindow.show();
   }
-}
-
-function isAddedToCart(id)
-{
-  return page.getInCart().includes(id);
-}
-
-const checkedIconPath = `${icons}#icon-check`;
-const cartButtonSelector = "discount-product-shopping-cart-button";
-
-function changeButtonIcon(clickedElement)
-{
-    while (clickedElement && !clickedElement.classList.contains(cartButtonSelector))
-    {
-        clickedElement = clickedElement.parentElement;
-    }
-
-    clickedElement.classList.remove('svg-fill-container');
-    clickedElement.classList.add('svg-stroke-container');
-
-    const buttonIcon = clickedElement.firstElementChild.firstElementChild;
-    buttonIcon.setAttribute('href', checkedIconPath);
-}
-
-const cartIconPath = `${icons}#icon-shopping-cart`;
-
-function changeButtonIconBack(clickedElement)
-{
-  while (clickedElement && !clickedElement.classList.contains(cartButtonSelector))
-  {
-    clickedElement = clickedElement.parentElement;
-  }
-
-  clickedElement.classList.remove('svg-stroke-container');
-  clickedElement.classList.add('svg-fill-container');
-
-  const buttonIcon = clickedElement.firstElementChild.firstElementChild;
-  buttonIcon.setAttribute('href', cartIconPath);
 }
 
 async function fillDiscountProducts()
@@ -123,8 +81,6 @@ function addDiscountProductsMarkupToThePage(markup)
     discountProducts.innerHTML = markup;
 }
 
-const shoppingCartIconPath = `${icons}#icon-shopping-cart`;
-
 function createDiscountProductItemMarkup(product)
 {
     const image =
@@ -152,8 +108,6 @@ function createCardBottomPanelMarkup(info, id)
     ${createAddToCardButton(id)}
     </div>`;
 }
-
-const discountIconPath = `${icons}#icon-discount`;
 
 function createProductImageCardMarkup({src, alt})
 {

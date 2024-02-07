@@ -24,6 +24,7 @@ import { getProducts } from "./requests"
 import { create, show } from "../detailed-product-info-modal-window"
 
 import icons from "/images/svg/icons.svg"
+import { refreshPageIcons, isAddedToCart } from "./refreshPageIcons"
 
 export async function fillProductsList() {
   const filters = getFilters()
@@ -96,12 +97,14 @@ function createCardsForProductsList(hits) {
 
     let dataProductId = `data-product-id="${hit._id}"`
     let svgUrl = icons + "#icon-shopping-cart"
-    let stroke = ""
+    // let stroke = ""
+    let stroke = "svg-fill-container"
 
     if (getInCart().includes(hit._id)) {
-      dataProductId = ""
+      // dataProductId = ""
       svgUrl = icons + "#icon-check"
-      stroke = "stroke"
+      // stroke = "stroke"
+      stroke = "svg-stroke-container"
     }
 
     li.innerHTML = `
@@ -155,26 +158,24 @@ function createCardsForProductsList(hits) {
     if (!isAddedToCart(id)) {
       addToCart(id)
       showCartAmount()
-      btn.innerHTML = `
-        <svg class="btn-svg product">
-          <use href="${icons}#icon-check"></use>
-        </svg>
-      `
-      btn.classList.add("stroke")
+      // btn.innerHTML = `
+      //   <svg class="btn-svg product">
+      //     <use href="${icons}#icon-check"></use>
+      //   </svg>
+      // `
+      // btn.classList.add("stroke")
+      refreshPageIcons(id, false);
     } else {
       deleteFromCart(id)
       showCartAmount()
-      btn.innerHTML = `
-        <svg class="btn-svg product">
-          <use href="${icons}#icon-shopping-cart"></use>
-        </svg>
-      `
-      btn.classList.remove("stroke")
+      // btn.innerHTML = `
+      //   <svg class="btn-svg product">
+      //     <use href="${icons}#icon-shopping-cart"></use>
+      //   </svg>
+      // `
+      // btn.classList.remove("stroke")
+      refreshPageIcons(id, true);
     }
-  }
-
-  function isAddedToCart(id) {
-    return getInCart().includes(id)
   }
 
   const productsItem = document.querySelectorAll("li.products-item")
