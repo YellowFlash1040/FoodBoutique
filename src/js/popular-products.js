@@ -24,15 +24,29 @@ async function productClick(event)
 
     if (name === "button" || name === "svg" || name === "use")
     {
-        page.addToCart(id);
-        page.showCartAmount();
-        changeButtonIcon(addToCartButton);
+        if (!isAddedToCart(id))
+        {
+            page.addToCart(id);
+            page.showCartAmount();
+            changeButtonIcon(addToCartButton);
+        }
+        else
+        {
+            page.deleteFromCart(id);
+            page.showCartAmount();
+            changeButtonIconBack(addToCartButton);
+        }
     }
     else
     {
         await productInfoModalWindow.create(id);
         productInfoModalWindow.show();
     }
+}
+
+function isAddedToCart(id)
+{
+  return page.getInCart().includes(id);
 }
 
 const checkedIconPath = `${icons}#icon-check`;
@@ -50,6 +64,22 @@ function changeButtonIcon(clickedElement)
 
     const buttonIcon = clickedElement.firstElementChild.firstElementChild;
     buttonIcon.setAttribute('href', checkedIconPath);
+}
+
+const cartIconPath = `${icons}#icon-shopping-cart`;
+
+export function changeButtonIconBack(clickedElement)
+{
+  while (clickedElement && !clickedElement.classList.contains(cartButtonSelector))
+  {
+    clickedElement = clickedElement.parentElement;
+  }
+
+  clickedElement.classList.remove('svg-stroke-container');
+  clickedElement.classList.add('svg-fill-container');
+
+  const buttonIcon = clickedElement.firstElementChild.firstElementChild;
+  buttonIcon.setAttribute('href', cartIconPath);
 }
 
 async function fillPopularProducts()
