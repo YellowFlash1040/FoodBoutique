@@ -1,0 +1,92 @@
+.checkout-modal-window {
+  background-color: var(--grey);
+
+  padding: 40px 20px 60px 20px;
+  max-width: 335px;
+
+  border-radius: 20px;
+
+  position: relative;
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .checkout-modal-window {
+    padding: 80px 40px;
+
+    max-width: 560px;
+  }
+}
+
+.checkout-modal-window .title {
+  max-width: 295px;
+
+  margin-bottom: 20px;
+
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.11;
+  text-transform: uppercase;
+}
+
+@media only screen and (min-width: 768px) {
+  .checkout-modal-window .title {
+    max-width: 480px;
+
+    font-size: 32px;
+    line-height: 1;
+  }
+}
+
+.checkout-modal-window .message {
+  max-width: 295px;
+
+  font-size: 14px;
+  line-height: 1.29;
+}
+
+@media only screen and (min-width: 768px) {
+  .checkout-modal-window .message {
+    max-width: 480px;
+
+    font-size: 18px;
+    line-height: 1.33;
+  }
+}
+
+.checkout-modal-window .close-icon {
+  position: absolute;
+
+  top: 14px;
+  right: 14px;
+
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+  .checkout-modal-window .close-icon {
+    width: 28px;
+    height: 28px;
+
+    top: 24px;
+    right: 24px;
+  }
+}
+
+.checkout-modal-window .image {
+  border-radius: 19px;
+  overflow: hidden;
+
+  margin-bottom: 40px;
+}
+
+@media only screen and (min-width: 768px) {
+  .checkout-modal-window .image {
+    margin-bottom: 37px;
+  }
+}

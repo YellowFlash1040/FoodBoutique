@@ -1,0 +1,60 @@
+/*List scroll bar styles (actually this one supposed to style list of products on the cart.html page)*/
+ul {
+  --sb-track-color: #e8e8e2;
+  --sb-thumb-color: #d6d6d0;
+  --sb-size: 5px;
+}
+
+@media only screen and (min-width: 768px) {
+  ul {
+    --sb-size: 9px;
+  }
+}
+
+ul::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+ul::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 20px;
+}
+
+ul::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 20px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  ul {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
+
+/*Browser page scroll bar styles*/
+body {
+  --sb-track-color: #e8e8e2;
+  --sb-thumb-color: #6d8434;
+  --sb-size: 10px;
+}
+
+body::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 7px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 7px;
+  border: 2px solid #e8e8e2;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}

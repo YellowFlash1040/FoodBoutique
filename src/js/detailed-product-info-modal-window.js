@@ -34,13 +34,29 @@ function closeLightBox(event)
     }
 }
 
+function isAddedToCart(id)
+{
+  return page.getInCart().includes(id);
+}
+
 function addToCart(event)
 {
     const id = event.currentTarget.dataset.id;
-    page.addToCart(id);
-    page.showCartAmount();
-    changeTextOnButton();
-    refreshPageIcons(id, false);
+
+    if (!isAddedToCart(id))
+    {
+        page.addToCart(id);
+        page.showCartAmount();
+        changeTextOnButton();
+        refreshPageIcons(id, false);
+    }
+    else
+    {
+        page.deleteFromCart(id);
+        page.showCartAmount();
+        changeTextOnButtonBack();
+        refreshPageIcons(id, true);
+    }
 }
 
 let addToCartButton;
@@ -49,6 +65,12 @@ function changeTextOnButton()
 {
     const insideSpan = addToCartButton.querySelector('span');
     insideSpan.textContent = "Remove from";
+}
+
+function changeTextOnButtonBack()
+{
+    const insideSpan = addToCartButton.querySelector('span');
+    insideSpan.textContent = "Add to";
 }
 
 function createMarkup({ name, category, size, popularity, desc: description, price, img }, productId)

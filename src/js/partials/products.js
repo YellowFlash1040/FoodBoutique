@@ -1,15 +1,15 @@
 // Filters Section
-const keywordInput = document.getElementById("keyword-input");
+const keywordInput = document.getElementById("keyword-input")
 
 // Products List Section
-const productsList = document.getElementById("products");
-const pagesPanel = document.getElementById("pages-panel");
-const previousBtn = document.getElementById("previous");
-const nextBtn = document.getElementById("next");
-const nothingFound = document.getElementById("nothing-found");
+const productsList = document.getElementById("products")
+const pagesPanel = document.getElementById("pages-panel")
+const previousBtn = document.getElementById("previous")
+const nextBtn = document.getElementById("next")
+const nothingFound = document.getElementById("nothing-found")
 
-import { getFilters, setFilters } from "./filters";
-import { getInCart } from "./cart";
+import { getFilters, setFilters } from "./filters"
+import { deleteFromCart, getInCart } from "./cart"
 import {
   disableNextBtn,
   disablePreviousBtn,
@@ -17,91 +17,91 @@ import {
   enablePreviousBtn,
   getTotalPages,
   setTotalPages,
-} from "./pages";
-import { fillPagesList } from "./pages";
-import { addToCart, showCartAmount } from "./cart";
-import { getProducts } from "./requests";
-import { create, show } from "../detailed-product-info-modal-window";
+} from "./pages"
+import { fillPagesList } from "./pages"
+import { addToCart, showCartAmount } from "./cart"
+import { getProducts } from "./requests"
+import { create, show } from "../detailed-product-info-modal-window"
 
-import icons from "/images/svg/icons.svg";
+import icons from "/images/svg/icons.svg"
 
 export async function fillProductsList() {
-  const filters = getFilters();
+  const filters = getFilters()
 
-  const categorySelect = document.getElementById("category-select");
+  const categorySelect = document.getElementById("category-select")
   if (filters.category) {
-    categorySelect.options[0].innerText = filters.category.replaceAll("_", " ");
-  } else categorySelect.options[0].innerText = "Show all";
+    categorySelect.options[0].innerText = filters.category.replaceAll("_", " ")
+  } else categorySelect.options[0].innerText = "Show all"
 
-  const hits = await searchProducts(filters);
+  const hits = await searchProducts(filters)
 
   // If nothing is found show nothing found div
   if (hits.length > 0) {
-    hideNothingFound();
-    createCardsForProductsList(hits);
-  } else showNothingFound();
+    hideNothingFound()
+    createCardsForProductsList(hits)
+  } else showNothingFound()
 
   // change buttons state depending on the opened page
-  if (filters.page === 1) disablePreviousBtn();
-  else enablePreviousBtn();
-  if (filters.page === getTotalPages()) disableNextBtn();
-  else enableNextBtn();
+  if (filters.page === 1) disablePreviousBtn()
+  else enablePreviousBtn()
+  if (filters.page === getTotalPages()) disableNextBtn()
+  else enableNextBtn()
 
   // fill pages list if there's more than one page
-  if (getTotalPages() <= 1) pagesPanel.classList.add("display-none");
+  if (getTotalPages() <= 1) pagesPanel.classList.add("display-none")
   else {
-    pagesPanel.classList.remove("display-none");
-    fillPagesList(filters);
+    pagesPanel.classList.remove("display-none")
+    fillPagesList(filters)
   }
 }
 
 async function searchProducts(filters) {
-  const res = await getProducts(filters);
-  setTotalPages(res.data.totalPages);
-  const hits = res.data.results;
-  return hits;
+  const res = await getProducts(filters)
+  setTotalPages(res.data.totalPages)
+  const hits = res.data.results
+  return hits
 }
 
 function hideNothingFound() {
-  nothingFound.classList.add("display-none");
+  nothingFound.classList.add("display-none")
 
-  previousBtn.classList.remove("display-none");
-  nextBtn.classList.remove("display-none");
+  previousBtn.classList.remove("display-none")
+  nextBtn.classList.remove("display-none")
 }
 
 function showNothingFound() {
-  productsList.innerHTML = "";
+  productsList.innerHTML = ""
 
-  nothingFound.classList.remove("display-none");
+  nothingFound.classList.remove("display-none")
 
-  previousBtn.classList.add("display-none");
-  nextBtn.classList.add("display-none");
+  previousBtn.classList.add("display-none")
+  nextBtn.classList.add("display-none")
 }
 
 export function getAndShowProducts() {
-  const keyword = keywordInput.value.trim();
+  const keyword = keywordInput.value.trim()
 
-  setFilters({ ...getFilters(), keyword, page: 1 });
+  setFilters({ ...getFilters(), keyword, page: 1 })
 
-  fillProductsList();
+  fillProductsList()
 }
 
 function createCardsForProductsList(hits) {
-  const items = [];
+  const items = []
 
   for (const hit of hits) {
-    const li = document.createElement("li");
-    li.className = "products-item";
-    li.setAttribute("data-product-id", hit._id);
+    const li = document.createElement("li")
+    li.className = "products-item"
+    li.setAttribute("data-product-id", hit._id)
 
-    let dataProductId = `data-product-id="${hit._id}"`;
-    let svgUrl = icons + "#icon-shopping-cart";
-    let stroke = "";
+    let dataProductId = `data-product-id="${hit._id}"`
+    let svgUrl = icons + "#icon-shopping-cart"
+    let stroke = ""
 
     if (getInCart().includes(hit._id)) {
-      dataProductId = "";
-      svgUrl = icons + "#icon-check";
-      stroke = "stroke";
+      dataProductId = ""
+      svgUrl = icons + "#icon-check"
+      stroke = "stroke"
     }
 
     li.innerHTML = `
@@ -135,44 +135,58 @@ function createCardsForProductsList(hits) {
           </button>
         </div>
       </div>
-    `;
+    `
 
-    items.push(li);
+    items.push(li)
   }
 
-  productsList.innerHTML = "";
-  productsList.append(...items);
+  productsList.innerHTML = ""
+  productsList.append(...items)
 
-  const btns = document.querySelectorAll("button[data-product-id]");
+  const btns = document.querySelectorAll("button[data-product-id]")
 
   for (const btn of btns) {
-    btn.addEventListener("click", toCartClick);
+    btn.addEventListener("click", toCartClick)
   }
 
   function toCartClick(evt) {
-    const btn = evt.currentTarget;
-    const id = btn.getAttribute("data-product-id");
-    addToCart(id);
-    showCartAmount();
-    btn.innerHTML = `
-      <svg class="btn-svg product">
-        <use href="${icons}#icon-check"></use>
-      </svg>
-    `;
-    btn.removeEventListener("click", toCartClick);
-    btn.classList.add("stroke");
+    const btn = evt.currentTarget
+    const id = btn.getAttribute("data-product-id")
+    if (!isAddedToCart(id)) {
+      addToCart(id)
+      showCartAmount()
+      btn.innerHTML = `
+        <svg class="btn-svg product">
+          <use href="${icons}#icon-check"></use>
+        </svg>
+      `
+      btn.classList.add("stroke")
+    } else {
+      deleteFromCart(id)
+      showCartAmount()
+      btn.innerHTML = `
+        <svg class="btn-svg product">
+          <use href="${icons}#icon-shopping-cart"></use>
+        </svg>
+      `
+      btn.classList.remove("stroke")
+    }
   }
 
-  const productsItem = document.querySelectorAll("li.products-item");
+  function isAddedToCart(id) {
+    return getInCart().includes(id)
+  }
+
+  const productsItem = document.querySelectorAll("li.products-item")
 
   for (const item of productsItem) {
     item.addEventListener("click", evt => {
-      const name = evt.target.nodeName.toLowerCase();
-      if (name === "button" || name === "svg" || name === "use") return;
+      const name = evt.target.nodeName.toLowerCase()
+      if (name === "button" || name === "svg" || name === "use") return
 
       create(item.getAttribute("data-product-id")).then(() => {
-        show();
-      });
-    });
+        show()
+      })
+    })
   }
 }
